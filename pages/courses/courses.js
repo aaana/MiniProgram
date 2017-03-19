@@ -4,7 +4,7 @@ Page({
         inputVal: "",
         courseList:[],
         allCourseList:[],
-        options:["课程","老师"],
+        options:["课程号","课程名称","老师"],
         index:0
     },
     onLoad:function(){
@@ -13,10 +13,16 @@ Page({
             courseList : [
                 {
                     courseId:1,
-                    courseName:"数据结构"
+                    courseName:"数据结构",
+                    teacherName:"a",
+                    num:50,
+                    createDate:"2016-01-01"
                 },{
                     courseId:2,
-                    courseName:"算法"
+                    courseName:"算法",
+                    teacherName:"a",
+                    num:50,
+                    createDate:"2016-01-01"
                 }
             ],
         });
@@ -61,6 +67,7 @@ Page({
         //   url: '',
         //   data: {
         //       courseName:e.detail.value
+        //       option:this.data.index
         //   },
         //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         //   // header: {}, // 设置请求的 header

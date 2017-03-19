@@ -22,3 +22,9 @@
 .courseList{
     background-color: white;
 }
+.course text.createDate{
+    float:right;
+    color: darkgray;
+    font-weight:normal;
+    font-size: 15px
+} 

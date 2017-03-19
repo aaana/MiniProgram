@@ -1,8 +1,10 @@
 <template name="courseItem">
-    <navigator id="{{courseId}}" url="" class="weui-cell" hover-class="weui-cell_active">
+    <navigator id="{{courseId}}" url="" class="weui-cell course" hover-class="weui-cell_active">
             <view class="weui-cell__bd">
-                <view>实时搜索文本</view>
-                <text> {{courseName}} </text>
+                <view class="courseName">{{courseName}}</view>
+                <text class="createDate">{{createDate}}</text>
+                <text class="num">{{num}}</text>
+                <text class="teacherName"> {{teacherName}} </text>
             </view>
     </navigator>
 </template>     
@@ -32,7 +34,7 @@
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
         <view class="courseList" wx:if="{{courseList.length > 0}}">
-           <template wx:for="{{courseList}}" is="courseItem" data="{{courseId:item.courseId,courseName:item.courseName}}"/>
+           <template wx:for="{{courseList}}" is="courseItem" data="{{...item}}"/>
         </view>
     </view>
 </view>
