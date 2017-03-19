@@ -1,0 +1,18 @@
+{
+    "tabBar":{
+    "color": "#000000",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "selectedColor": "#dddddd",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "通知"
+    },{
+      "pagePath": "pages/login/login",
+      "text": "匿名区"
+    },{
+      "pagePath": "pages/login/login",
+      "text": "点到"
+    }]
+  }
+}

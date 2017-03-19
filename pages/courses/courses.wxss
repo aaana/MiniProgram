@@ -1,0 +1,24 @@
+/* pages/courses/courses.wxss */
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+.option{
+    /*background-color: white;*/
+    /*border-radius: 3px;*/
+    vertical-align: middle;
+    padding: 6px 10px;
+    height:28px;
+    line-height:28px;
+    color:#09BB07
+
+}
+.courseList{
+    background-color: white;
+}

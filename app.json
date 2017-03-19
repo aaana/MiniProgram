@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/courses/courses",
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/course/course",
+    "pages/index/index",
+    "pages/notice/notice",
+    "pages/discussion/discussion",
+    "pages/attendance/attendance"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Wecourse",
+    "navigationBarTextStyle":"black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "tabBar":{
+    "color": "#000000",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "selectedColor": "#dddddd",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "通知"
+    },{
+      "pagePath": "pages/login/login",
+      "text": "匿名区"
+    },{
+      "pagePath": "pages/login/login",
+      "text": "点到"
+    }]
+  }
+}

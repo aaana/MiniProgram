@@ -1,0 +1,11 @@
+{
+"tabBar": {
+    "list": [{
+      "pagePath": "pages/login/login",
+      "text": "login"
+    },{
+      "pagePath": "pages/logs/logs",
+      "text": "text"
+    }]
+  }    
+}
