@@ -25,6 +25,11 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+     userInfo:{
+            userId:1,
+            username:"Anna",
+            studentNo:"1352875",
+            isTeacher:true
+        }
   }
 })

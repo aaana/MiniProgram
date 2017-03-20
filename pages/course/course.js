@@ -1,0 +1,59 @@
+var app = getApp();
+Page({
+    data:{
+        noticeList : []
+    },
+    onLoad:function(options){
+        this.setData({
+            courseId:options.courseId,
+            userInfo:app.globalData.userInfo
+        })
+        console.log(this.data.courseId);
+        wx.setNavigationBarTitle({
+          title: options.courseName,
+          success: function(res) {
+            // success
+          }
+        })
+        //获取通知列表
+        this.setData({
+            noticeList:[
+                {
+                    noticeId:1,
+                    noticeContent:"今天下午quiz",
+                    noticeTime:"2016-10-12"
+                },
+                {
+                    noticeId:2,
+                    noticeContent:"今天下午的课改到机房上，不要迟到！",                                                                    noticeTime:"2016-10-12"
+
+                }
+            ]
+        })
+    },
+    bindFormSubmit:function(e){
+        var that = this;
+        console.log(that.data.userInfo.userId+":"+e.detail.value.textarea);
+        var notice = e.detail.value.textarea;
+        wx.request({
+          url: '',
+          data: {
+              notice:notice,
+              courseId:that.data.courseId,
+              userId:that.data.userInfo.userId
+          },
+          method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          // header: {}, // 设置请求的 header
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+    }
+
+})

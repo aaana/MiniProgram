@@ -6,25 +6,131 @@
 .searchbar-result:before{
     display: none;
 }
-.weui-cell{
-    padding: 12px 15px 12px 35px;
+.course{
+    padding: 12px 10px 0px 10px;
 }
+.info{
+    padding:10px;
+    background-color: white;
+    height:77px;
+    padding-top:20px;
+    /*border-bottom: 1px solid darkgray;*/
+}
+
+.info span{
+    float: left;
+}
+
+.info span:nth-child(2){
+    margin-left:20px;
+}
+
+.upper{
+    background-color: white;
+}
+
 .option{
-    /*background-color: white;*/
-    /*border-radius: 3px;*/
+    background-color: rgba(66,66,66,0.2);
+    border-radius: 3px;
+    margin-right: 2px;
     vertical-align: middle;
     padding: 6px 10px;
     height:28px;
     line-height:28px;
-    color:#09BB07
 
+}
+.option image{
+    position: relative;
+    top:3px;
+}
+span.option text{
+    color:#286090;
+    /*opacity: 1;*/
 }
 .courseList{
     background-color: white;
-}
-.course text.createDate{
-    float:right;
-    color: darkgray;
     font-weight:normal;
-    font-size: 15px
+}
+.course text.courseName{
+    font-weight: bold;
+    font-size: 22px;
+}
+.course text.modifyDate{
+    float:right;
+    color: lightgray;
+    font-size: 15px;
+    font-weight: lighter;
 } 
+.course text.num,.course text.createDate{
+    color: darkgray;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-right:20px;
+} 
+.course text.teacherName{
+    font-size: 16px;
+    margin-left: 10px;
+    color: black;
+    font-weight: 200;
+}
+.page__bd .createCourseBtn{
+    /*border-radius:50%;*/
+    /*height:30px;*/
+    margin-left: 5px;
+    margin-top:25px;
+    float:right;
+    /*width:30px;*/
+    border:none;
+    background-color:#286090 ;
+    color: white;
+    font-size: 15px;
+  
+}
+.page__bd .createCourse{
+    border-radius:50%;
+    height:30px;
+    margin-left: 5px;
+    width:30px;
+    border:none;
+    background-color:#286090 ;
+    color: white;
+    font-size: 15px;
+    float: right;
+}
+
+.page__bd .createCourse text{
+    position: relative;
+    top:-11px;
+    left:-9px;
+    font-size: 20px;
+}
+
+view.viewDetailedCourse{
+    color: black;
+    float: right;
+}
+view.viewDetailedCourse text{
+    color: darkgray;
+    font-weight: 200;
+    font-size:12px;
+}
+/*.weui-search-bar__box{
+    padding-right:0px; 
+}*/
+
+.unreadNotice{
+    /*border-radius: 50%;*/
+    background-color:red;
+    height:90px;
+    width:2px;
+    font-size:10px;
+    color:white;
+    /*display:inline-block;*/
+    text-align:center;
+    margin-right:5px;
+    float:left;
+
+}
+.isInLabel{
+    margin-left:10px;
+}

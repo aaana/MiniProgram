@@ -1,22 +1,10 @@
-<template name="courseItem">
-    <navigator id="{{courseId}}" url="" class="weui-cell course" hover-class="weui-cell_active">
-            <view class="weui-cell__bd">
-                <view class="courseName">{{courseName}}</view>
-                <text class="createDate">{{createDate}}</text>
-                <text class="num">{{num}}</text>
-                <text class="teacherName"> {{teacherName}} </text>
-            </view>
-    </navigator>
-</template>     
+<import src="../../utils/util.wxml"></import>
 <view class="page">
-    <!--<view class="page__hd">
-        <view class="page__title">SearchBar</view>
-        <view class="page__desc">搜索栏</view>
-    </view>-->
     <view class="page__bd">
-        <view class="weui-search-bar">
+    <view class="upper">
+        <view wx:if="{{!userInfo.isTeacher}}" class="weui-search-bar">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{options}}">
-                <span class="option">{{options[index]}}</span>
+                <span class="option"><text>{{options[index]}}</text><image style="width:18px;height:18px" src="../../images/more_unfold.png"></image></span>
             </picker>
             <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
@@ -33,8 +21,41 @@
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
-        <view class="courseList" wx:if="{{courseList.length > 0}}">
-           <template wx:for="{{courseList}}" is="courseItem" data="{{...item}}"/>
+        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->
+        
+    </view>
+    <block wx:if="{{inputVal === ''}}">
+    <swiper indicator-dots="{{true}}"
+  autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}">
+        <block wx:for="{{imgUrls}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" style="width:100%; height=:150px;"/>
+            </swiper-item>
+        </block>
+    </swiper>
+        <view class="info">
+            <span><image style="width: 80px; height:80px; background-color: #eeeeee;" mode="{center" src="../../images/a.jpg"></image>
+            </span>
+            <span>
+                <text>{{userInfo.username}}\n</text>
+                <text>{{userInfo.studentNo}}</text>
+            </span>
+            <button bindtap="createCourseBtnClicked" wx:if="{{userInfo.isTeacher}}" class="createCourseBtn"><text>创建班级</text></button>
         </view>
+        <template is="loading" data="{{loadingHidden}}"/>
+        <view class="courseList" wx:if="{{courseList.length > 0}}">
+            <template wx:for="{{courseList}}" is="courseItem" data="{{...item}}"/>
+        </view>
+    </block>
+    <view class="courseList" wx:if="{{inputVal !== ''&&searchedCourseListIn.length > 0}}">
+        <template is="loading" data="{{loadingHidden}}"/>
+        <text class="isInLabel">已加入班级</text>
+        <template wx:for="{{searchedCourseListIn}}" is="courseItem" data="{{...item}}"/>
+    </view>
+    <view style="margin-top:5px;" class="courseList" wx:if="{{inputVal !== ''&&searchedCourseListNotIn.length > 0}}">
+        <template is="loading" data="{{loadingHidden}}"/>
+        <text class="isInLabel">未加入班级</text>
+        <template wx:for="{{searchedCourseListNotIn}}" is="courseItem" data="{{...item}}"/>
+    </view>
     </view>
 </view>

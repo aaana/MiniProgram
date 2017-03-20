@@ -1,0 +1,17 @@
+<import src="../../utils/util.wxml"></import>
+<label class="rollLabel"><image style="width:30px;height:30px" src="../../images/scanning.png"></image></label>
+<view class="customedTab">
+<label class="noticeLabel"><image style="width:30px;height:25px" src="../../images/notice.png"></image><view>通知</view></label>
+<label class="discussionLabel"><image style="width:30px;height:25px"  src="../../images/discussion.png"></image><view>匿名讨论</view></label>
+
+</view>
+
+<view wx:if="{{userInfo.isTeacher}}" class="section">
+  <form bindsubmit="bindFormSubmit">
+    <textarea class="noticeTextArea" placeholder="发布通知..." name="textarea"/>
+    <button class="publishBtn" form-type="submit"> 发布 </button>
+  </form>
+</view>
+<view wx:for="{{noticeList}}">
+    <template is="noticeItem" data="{{...item}}"></template>
+</view>
