@@ -1,2 +1,3 @@
 <!--pages/discussion/discussion.wxml-->
-<text>pages/discussion/discussion.wxml</text>
+<import src="../../utils/util.wxml"></import>
+<template is="customedTab" data="{{...tabData}}"></template>

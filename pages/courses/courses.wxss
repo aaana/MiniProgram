@@ -1,13 +1,11 @@
 /* pages/courses/courses.wxss */
+@import "../../utils/util.wxss";
 .searchbar-result{
     margin-top: 0;
     font-size: 14px;
 }
 .searchbar-result:before{
     display: none;
-}
-.course{
-    padding: 12px 10px 0px 10px;
 }
 .info{
     padding:10px;
@@ -51,28 +49,7 @@ span.option text{
     background-color: white;
     font-weight:normal;
 }
-.course text.courseName{
-    font-weight: bold;
-    font-size: 22px;
-}
-.course text.modifyDate{
-    float:right;
-    color: lightgray;
-    font-size: 15px;
-    font-weight: lighter;
-} 
-.course text.num,.course text.createDate{
-    color: darkgray;
-    font-size: 16px;
-    font-weight: lighter;
-    margin-right:20px;
-} 
-.course text.teacherName{
-    font-size: 16px;
-    margin-left: 10px;
-    color: black;
-    font-weight: 200;
-}
+
 .page__bd .createCourseBtn{
     /*border-radius:50%;*/
     /*height:30px;*/

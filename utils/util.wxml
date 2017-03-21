@@ -30,3 +30,10 @@
         </view>
     </view>
 </template>
+<template name="customedTab">
+<view class="customedTab">
+<label bindtap="tab1Tapped"  class="label1"><image style="width:30px;height:25px" src="{{tab==1?img1Tapped:img1}}"></image><view class="{{tab==1?'blue':'gray'}}">{{tab1Name}}</view></label>
+<label bindtap="tab2Tapped" class="label2"><image style="width:30px;height:25px"  src="{{tab==2?img2Tapped:img2}}"></image><view class="{{tab==2?'blue':'gray'}}">{{tab2Name}}</view></label>
+
+</view>
+</template>

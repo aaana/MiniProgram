@@ -1,7 +1,17 @@
 var app = getApp();
 Page({
     data:{
-        noticeList : []
+        noticeList : [],
+        tabData:{
+            tab:1,
+            img1Tapped:'../../images/noticeTapped.png',
+            img1:'../../images/notice.png',
+            img2Tapped:'../../images/discussionTapped.png',
+            img2:'../../images/discussion.png',
+            tab1Name:'通知',
+            tab2Name:'匿名讨论'
+
+        }
     },
     onLoad:function(options){
         this.setData({
@@ -53,6 +63,43 @@ Page({
           complete: function() {
             // complete
           }
+        })
+    },
+    rollLabelTapped:function(){
+        console.log("rollLabelTapped");
+        wx.scanCode({
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+    },
+    tab1Tapped:function(){
+        this.setData({
+            tabData:{
+                tab:1,
+            }
+        })
+    },
+    tab2Tapped:function(){
+        this.setData({
+            tabData:{
+                tab:2,
+            }
+        })
+        wx.redirectTo({
+            url: '../discussion/discussion',
+            fail:function(){
+                console.log("fail");
+            },
+            success:function(){
+                console.log("success");
+            }
         })
     }
 

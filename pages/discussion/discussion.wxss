@@ -1,1 +1,2 @@
 /* pages/discussion/discussion.wxss */
+@import "../../utils/util.wxss";
