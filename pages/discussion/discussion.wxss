@@ -1,5 +1,19 @@
 /* pages/discussion/discussion.wxss */
 @import "../../utils/util.wxss";
+.upper{
+    background-color:black;
+    text-align:right;
+    position:fixed;
+    height:32px;
+    width:100%;
+    top:0px;
+    z-index:2
+}
+
+.upper view{
+    margin-right: 15px
+}
+
 .pageHead{
     height:150px;
     background-image: url("http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg");

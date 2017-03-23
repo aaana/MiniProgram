@@ -7,6 +7,7 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
        questionId:options.questionId,
+       //应该注释
        commentList:[{
          commenterId:1,
          commentId:1,
@@ -22,6 +23,27 @@ Page({
          }]
        }],
     })
+    //获取全部评论
+    // wx.request({
+    //   url: 'https://URL',
+    //   data: {
+    //     grandparent_id:this.data.questionId
+    //   },
+    //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    //   // header: {}, // 设置请求的 header
+    //   success: function(res){
+    //     // success
+    //     this.setData({
+    //       commentList:res.commentList
+    //     })
+    //   },
+    //   fail: function() {
+    //     // fail
+    //   },
+    //   complete: function() {
+    //     // complete
+    //   }
+    // })
     this.setData({
       commentListDiv:generateCommentListView(this.data.commentList)
     }) 

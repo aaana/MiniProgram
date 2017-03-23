@@ -12,7 +12,7 @@ Page({
         imgUrls: [
       'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'
-    ],
+    ]
 
     },
     onLoad:function(){
@@ -259,7 +259,19 @@ Page({
         index: e.detail.value
     })
     },
-    createCourseBtnClicked:function(e){
-
+    createCourseTapped:function(e){
+        console.log("createCourseTapped");
+        wx.navigateTo({
+          url: '../createCourse/createCourse',
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
     }
 });

@@ -1,6 +1,6 @@
 @import "../../utils/util.wxss";
 view.rollLabel{
-    margin-right:18px;
+    margin-right:15px;
 }
 
 view.upper{
@@ -21,6 +21,10 @@ view.upper{
     margin-top:40px;
     padding: 10px
 
+}
+
+.noticeTextArea textarea{
+    width:100%
 }
 
 .noticeList{

@@ -1,0 +1,8 @@
+<view class="createCourseView">
+<form bindsubmit="bindFormSubmit">
+<view class="courseInputView">
+<input focus="true" placeholder="课程名" type="text" />
+</view>
+<button form-type="submit" class="createBtn">创建</button>
+</form>
+</view>

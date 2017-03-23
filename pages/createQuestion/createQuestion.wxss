@@ -1,0 +1,21 @@
+.createQuestionView{
+    margin-top: 10px;
+}
+
+.questionTextFieldView{
+    padding: 10px;
+    border:1rpx solid #d6d6d6;
+    margin:10px;
+    border-radius:5px;
+}
+
+.questionTextFieldView textarea{
+    width: 100%
+}
+
+
+.createBtn{
+    margin:10px;
+    background-color:#286090;
+    color:white;
+}

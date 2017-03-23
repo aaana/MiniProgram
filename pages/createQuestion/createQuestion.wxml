@@ -1,0 +1,8 @@
+<view class="createQuestionView">
+<form bindsubmit="bindFormSubmit">
+<view class="questionTextFieldView">
+<textarea focus="true" placeholder="问题" type="text"/>
+</view>
+<button  form-type="submit" class="createBtn">创建问题</button> 
+</form>
+</view>

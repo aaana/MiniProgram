@@ -66,7 +66,18 @@ Page({
         // })
      
     },
-    commentTapped:function(){
-        console.log("comment tapped");
+    createQuestionTapped:function(){
+        wx.navigateTo({
+          url: '../createQuestion/createQuestion',
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
     }
 })

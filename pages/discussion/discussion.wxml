@@ -1,5 +1,9 @@
 <!--pages/discussion/discussion.wxml-->
 <import src="../../utils/util.wxml"></import>
+  <view class="upper">
+        <view><image bindtap="createQuestionTapped" style="width:30px;height:30px" src="../../images/add.png"></image></view>
+        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->      
+    </view>
 <view class="pageHead">
 </view>
 <view class="pageTitle">
@@ -11,8 +15,8 @@
 <template is="customedTab" data="{{...tabData}}"></template>
 
 <template name="discussionItem">
-    <navigator url="../question/question?questionId={{questionId}}"class="discussionItem">
+    <navigator url="../question/question?questionId={{questionId}}"class="discussionItem" hover-class="navigator-hover" >
         <view><text>{{questionAbstract}}</text></view>
-        <view class="comment"><image bindtap="commentTapped" src="../../images/comment.png"/><text>{{commentNum}}</text></view>
+        <view class="comment"><image src="../../images/comment.png"/><text>{{commentNum}}</text></view>
     </navigator>
 </template>

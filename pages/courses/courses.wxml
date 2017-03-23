@@ -21,7 +21,7 @@
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>  
     <view wx:if="{{userInfo.isTeacher}}" class="upper">
-        <view><image style="width:25px;height:25px" src="../../images/add.png"></image></view>
+        <view><image bindtap="createCourseTapped" style="width:30px;height:30px" src="../../images/add.png"></image></view>
         <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->      
     </view>
     <block wx:if="{{inputVal === ''}}">
@@ -56,6 +56,6 @@
         <text class="isInLabel">未加入班级</text>
         <template wx:for="{{searchedCourseListNotIn}}" is="courseItem" data="{{...item}}"/>
     </view>
-            <template is="loading" data="{{loadingHidden}}"/>
+            <!--<template is="loading" data="{{loadingHidden}}"/>-->
     </view>
 </view>

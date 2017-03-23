@@ -1,5 +1,5 @@
 <import src="../../utils/util.wxml"></import>
-<view class="upper"><view class="rollLabel" bindtap="rollLabelTapped"><image style="width:25px;height:25px" src="../../images/scan2.png"></image></view>
+<view class="upper"><view class="rollLabel" bindtap="rollLabelTapped"><image style="width:26px;height:26px" src="../../images/scan2.png"></image></view>
 </view>
 <view wx:if="{{userInfo.isTeacher}}" class="section">
   <form bindsubmit="bindFormSubmit">
