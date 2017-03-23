@@ -1,18 +1,2 @@
 /* pages/createCourse/createCourse.wxss */
-.createCourseView{
-    margin-top: 10px;
-}
-
-.courseInputView{
-    padding: 10px;
-    border:1rpx solid #d6d6d6;
-    margin:10px;
-    border-radius:5px;
-}
-
-
-.createBtn{
-    margin:10px;
-    background-color:#286090;
-    color:white;
-}
+@import "../../utils/formView.wxss";

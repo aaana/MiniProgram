@@ -1,12 +1,12 @@
-/* pages/login/login.wxss */
 .formView{
-    margin-top: 10px
+    margin-top: 20px
 }
 .inputView{
     margin: 10px;
     border: 1rpx solid #d6d6d6;
     border-radius: 5px;
-    padding: 5px
+    padding: 10px;
+    background-color: white
 }
 
 .formView button{

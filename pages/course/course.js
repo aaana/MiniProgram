@@ -22,7 +22,7 @@ Page({
         wx.setNavigationBarTitle({
           title: options.courseName,
           success: function(res) {
-            // success
+            // success 
           }
         })
         //获取通知列表
@@ -101,4 +101,4 @@ Page({
         })
     }
 
-})
+});

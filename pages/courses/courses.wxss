@@ -33,7 +33,7 @@
     z-index:2
 }
 
-.banner{
+.bannerTeacher{
     margin-top:25px;
 }
 

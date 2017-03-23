@@ -11,7 +11,7 @@
     </view>
   </form>
 </view>
-<view class="noticeList">
+<view class="{{userInfo.isTeacher?'noticeListTeacher':'noticeListStu'}}">
     <template wx:for="{{noticeList}}" is="noticeItem" data="{{...item}}"></template>
 </view>
 <template is="customedTab" data="{{...tabData}}"></template>

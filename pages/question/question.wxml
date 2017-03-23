@@ -30,24 +30,26 @@
     </view>
 </view>
 <view class="commentBox">
-    <view>
         <form>
+         <view class="commentForm">
             <input name="comment" focus="{{commentInputFocus}}" type="text" placeholder="{{commentInputPlaceholder}}"></input>
+        </view>
+        <image bindtap="sendCommentTapped" class="sendComment" src="../../images/send.png"></image>
         </form>
-    </view>
+    
 </view>
 </view>
 <template name="commentItem">
-    <view data-commenterid="{{commenterId}}" data-commentid="{{commentId}}" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
+    <view data-commenterid="{{commenterId}}" data-commentid="{{commentId}}" data-commentername="{{commenter}}" bindtap="commentItemTapped" class="commentItem">
             <view class="info">
                 <image src="../../images/a.jpg"></image>
                 <span>
-                    <text>匿名用户</text>
-                    <text>{{commentContent}}</text>
+                    <text>{{commenter}}</text>
+                    <text>{{(parentCommenter?("@"+parentCommenter+": "):"")+commentContent}}</text>
                     <text>{{commentTime}}</text>
-                    <block wx:if="{{subCommentList.length > 0}}">
+                    <!--<block wx:if="{{subCommentList.length > 0}}">
                             <template wx:for="{{subCommentList}}" data="{{...item}}" is="commentItem"/>
-                    </block>
+                    </block>-->
                 </span>
             </view>
         </view>

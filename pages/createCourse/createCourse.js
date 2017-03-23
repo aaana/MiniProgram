@@ -1,6 +1,6 @@
 Page({
-    bindFormSubmit:function(e){
-      console.log("bindFormSubmit");
+    createCourseFormSubmit:function(e){
+      console.log("createCourseFormSubmit");
         //存数据库
         // wx.request({
         //   url: 'https://URL',
@@ -30,4 +30,4 @@ Page({
           }
         })
     }
-})
+});

@@ -11,17 +11,20 @@ Page({
        commentList:[{
          commenterId:1,
          commentId:1,
+         commenter:"匿名用户1",
          commentTime:"2016-10-12",
          commentContent:"根评论",
-         subCommentList:
-         [{
+         parentCommenter:null
+       },
+       {
             commenterId:2,
             commentId:2,
+            commenter:"匿名用户2",
             commentTime:"2016-10-12",
             commentContent:"子评论1",
-            subCommentList:[]
-         }]
-       }],
+            parentCommenter:"匿名用户1"
+         }
+         ],
     })
     //获取全部评论
     // wx.request({
@@ -73,6 +76,9 @@ Page({
       commentInputFocus:true,
       commentInputPlaceholder:'@'+e.currentTarget.dataset.commentername+':'
     })
+  },
+  sendCommentTapped:function(){
+    console.log("sendCommentTapped");
   }
 })
 

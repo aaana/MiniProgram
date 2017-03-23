@@ -29,7 +29,7 @@ App({
             userId:1,
             username:"Anna",
             studentNo:"1352875",
-            isTeacher:true
+            isTeacher:false
         }
   }
 })

@@ -27,8 +27,12 @@ view.upper{
     width:100%
 }
 
-.noticeList{
+.noticeListTeacher{
     margin-top:20px
+}
+
+.noticeListStu{
+    margin-top:40px
 }
 
 button.publishBtn{
