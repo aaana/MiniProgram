@@ -1,8 +1,7 @@
 <import src="../../utils/util.wxml"></import>
 <view class="page">
     <view class="page__bd">
-    <view class="upper">
-        <view wx:if="{{!userInfo.isTeacher}}" class="weui-search-bar">
+    <view wx:if="{{!userInfo.isTeacher}}" class="weui-search-bar">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{options}}">
                 <span class="option"><text>{{options[index]}}</text><image style="width:18px;height:18px" src="../../images/more_unfold.png"></image></span>
             </picker>
@@ -20,11 +19,13 @@
                 </label>
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-        </view>
-        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->
-        
+    </view>  
+    <view wx:if="{{userInfo.isTeacher}}" class="upper">
+        <view><image style="width:25px;height:25px" src="../../images/add.png"></image></view>
+        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->      
     </view>
     <block wx:if="{{inputVal === ''}}">
+    <view class="banner">
     <swiper indicator-dots="{{true}}"
   autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}">
         <block wx:for="{{imgUrls}}">
@@ -33,7 +34,8 @@
             </swiper-item>
         </block>
     </swiper>
-        <view class="info">
+    </view>
+        <!--<view class="info">
             <span><image style="width: 80px; height:80px; background-color: #eeeeee;" mode="{center" src="../../images/a.jpg"></image>
             </span>
             <span>
@@ -41,21 +43,19 @@
                 <text>{{userInfo.studentNo}}</text>
             </span>
             <button bindtap="createCourseBtnClicked" wx:if="{{userInfo.isTeacher}}" class="createCourseBtn"><text>创建班级</text></button>
-        </view>
-        <template is="loading" data="{{loadingHidden}}"/>
+        </view>-->
         <view class="courseList" wx:if="{{courseList.length > 0}}">
             <template wx:for="{{courseList}}" is="courseItem" data="{{...item}}"/>
         </view>
     </block>
     <view class="courseList" wx:if="{{inputVal !== ''&&searchedCourseListIn.length > 0}}">
-        <template is="loading" data="{{loadingHidden}}"/>
         <text class="isInLabel">已加入班级</text>
         <template wx:for="{{searchedCourseListIn}}" is="courseItem" data="{{...item}}"/>
     </view>
     <view style="margin-top:5px;" class="courseList" wx:if="{{inputVal !== ''&&searchedCourseListNotIn.length > 0}}">
-        <template is="loading" data="{{loadingHidden}}"/>
         <text class="isInLabel">未加入班级</text>
         <template wx:for="{{searchedCourseListNotIn}}" is="courseItem" data="{{...item}}"/>
     </view>
+            <template is="loading" data="{{loadingHidden}}"/>
     </view>
 </view>

@@ -1,7 +1,7 @@
 // pages/discussion/discussion.js
 Page({
  data:{
-        noticeList : [],
+        discussionList:[],
         tabData:{
             tab:2,
             img1Tapped:'../../images/noticeTapped.png',
@@ -15,6 +15,24 @@ Page({
     },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+        discussionList:[
+            {
+                userId:1,
+                questionId:1,
+                questionContent:"测试问题1",
+                questionAbstract:"测试问题1概要",
+                commentNum:3
+            },
+            {
+                userId:2,
+                questionId:2,
+                questionContent:"测试问题2",
+                questionAbstract:"测试问题2概要",
+                commentNum:2
+            }
+        ]
+    })
   },
   onReady:function(){
     // 页面渲染完成
@@ -29,11 +47,9 @@ Page({
     // 页面关闭
   },
    tab1Tapped:function(){
-        this.setData({
-            tabData:{
-                tab:1,
-            }
-        })
+        // this.setData({
+        //     'tabData.tab':1
+        // })
           wx.redirectTo({
             url: '../course/course',
             fail:function(){
@@ -45,11 +61,12 @@ Page({
         })
     },
     tab2Tapped:function(){
-        this.setData({
-            tabData:{
-                tab:2,
-            }
-        })
+        // this.setData({
+        //    'tabData.tab':2
+        // })
      
+    },
+    commentTapped:function(){
+        console.log("comment tapped");
     }
 })

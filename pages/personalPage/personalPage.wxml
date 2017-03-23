@@ -1,0 +1,9 @@
+        <view class="info">
+            <span><image style="width: 80px; height:80px; background-color: #eeeeee;" mode="{center" src="../../images/a.jpg"></image>
+            </span>
+            <span>
+                <text>{{userInfo.username}}\n</text>
+                <text>{{userInfo.studentNo}}</text>
+            </span>
+        
+        </view>

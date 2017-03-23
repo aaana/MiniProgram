@@ -1,2 +1,47 @@
 /* pages/discussion/discussion.wxss */
 @import "../../utils/util.wxss";
+.pageHead{
+    height:150px;
+    background-image: url("http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg");
+    background-size: cover;
+}
+
+.pageTitle{
+    height:70px;
+    background-color:white;
+    border-bottom:1rpx solid darkgray;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+
+}
+
+/*.discussionList{
+    margin-top:10px
+}*/
+.discussionItem{
+    background-color: white;
+    padding:15px 10px 0 10px;
+    border-bottom: 1rpx solid #D9D9D9
+}
+
+.comment{
+    text-align: right;
+}
+
+.comment image{
+    margin-right: 2px;
+    width:20px;
+    height:18px
+}
+.comment text{
+    position: relative;
+    top:-4px;
+    font-size:13px;
+    color: #286090;
+
+}

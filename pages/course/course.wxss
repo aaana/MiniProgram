@@ -1,12 +1,17 @@
 @import "../../utils/util.wxss";
-label.rollLabel{
-    position: fixed;
-    top:10px;
-    right:10px;
+view.rollLabel{
+    margin-right:18px;
 }
 
 view.upper{
-    margin-bottom: 40px;
+    /*margin-bottom:25px;*/
+    background:black;
+    text-align:right;
+    position:fixed;
+    top:0px;
+    height:32px;
+    width:100%;
+    z-index: 2
 }
 
 .noticeTextArea{
@@ -15,7 +20,11 @@ view.upper{
     width:370px;
     border:1px solid darkgray;
     border-radius:10px;
-    /*margin-top:40px;*/
+    margin-top:40px;
+}
+
+.noticeList{
+    margin-top:20px
 }
 
 button.publishBtn{

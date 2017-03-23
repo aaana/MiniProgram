@@ -80,18 +80,16 @@ Page({
         })
     },
     tab1Tapped:function(){
-        this.setData({
-            tabData:{
-                tab:1,
-            }
-        })
+        // this.setData({
+        //     'tabData.tab':1
+        // })
     },
     tab2Tapped:function(){
-        this.setData({
-            tabData:{
-                tab:2,
-            }
-        })
+        // this.setData({
+        //     tabData:{
+        //       'tabData.tab':2
+        //     }
+        // })
         wx.redirectTo({
             url: '../discussion/discussion',
             fail:function(){

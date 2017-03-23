@@ -1,13 +1,15 @@
 {
   "pages":[
+    
     "pages/courses/courses",
     "pages/logs/logs",
     "pages/login/login",
     "pages/course/course",
     "pages/index/index",
-    "pages/notice/notice",
     "pages/discussion/discussion",
-    "pages/attendance/attendance"
+    "pages/question/question",
+    "pages/attendance/attendance",
+    "pages/personalPage/personalPage"
   ],
   "window":{
     "backgroundTextStyle":"light",

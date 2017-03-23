@@ -1,0 +1,54 @@
+<view>
+<view class="question">
+    <view class="info">
+        <image src="../../images/a.jpg"></image>
+        <span>
+            <text>匿名用户</text>
+            <text>2016-10-12</text>
+        </span>
+    </view>
+    <view class="questionContent">
+        <text>设创学院智能大数据可视化实验室 招聘 本科 志愿者 5 人。要求理工科背景、在读大三大四的本科生。能够帮助实验室完成大数据分析方面的相关实验，例如标注分析数据，判读可视化图表等。工作优异者将有机会进入实验室实习，设计新颖 实用的可视化工具，并发表相关研究论文。</text>
+
+    </view>
+             <view class="comment"><image bindtap="commentTapped" src="../../images/discussionTapped.png"/></view>
+    <view class="commentList">
+    {{commentListDiv}}
+        <!--<block wx:for="{{commentList}}">
+            <template is="commentItem" data="{{...item}}"/>
+        </block>-->
+        <!--<view data-commenterid="1" data-commentid="2" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
+            <view class="info">
+                <image src="../../images/a.jpg"></image>
+                <span>
+                    <text>匿名用户</text>
+                    <text>评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容</text>
+                    <text>2016-10-12</text>
+                </span>
+            </view>
+        </view>-->
+    </view>
+</view>
+<view class="commentBox">
+    <view>
+        <form>
+            <input name="comment" focus="{{commentInputFocus}}" type="text" placeholder="{{commentInputPlaceholder}}"></input>
+        </form>
+    </view>
+</view>
+</view>
+<template name="commentItem">
+    <view data-commenterid="{{commenterId}}" data-commentid="{{commentId}}" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
+            <view class="info">
+                <image src="../../images/a.jpg"></image>
+                <span>
+                    <text>匿名用户</text>
+                    <text>{{commentContent}}</text>
+                    <text>{{commentTime}}</text>
+                    <block wx:if="{{subCommentList.length > 0}}">
+                            <template wx:for="{{subCommentList}}" data="{{...item}}" is="commentItem"/>
+                    </block>
+                </span>
+            </view>
+        </view>
+</template>

@@ -1,3 +1,18 @@
 <!--pages/discussion/discussion.wxml-->
 <import src="../../utils/util.wxml"></import>
+<view class="pageHead">
+</view>
+<view class="pageTitle">
+    <text>匿名讨论区</text>
+</view>
+<view class="discussionList">
+    <template wx:for="{{discussionList}}" is="discussionItem" data="{{...item}}"/>
+</view>
 <template is="customedTab" data="{{...tabData}}"></template>
+
+<template name="discussionItem">
+    <navigator url="../question/question?questionId={{questionId}}"class="discussionItem">
+        <view><text>{{questionAbstract}}</text></view>
+        <view class="comment"><image bindtap="commentTapped" src="../../images/comment.png"/><text>{{commentNum}}</text></view>
+    </navigator>
+</template>
