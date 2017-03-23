@@ -35,6 +35,10 @@ view.info span text:last-child{
     font-size:16px
 }
 
+.commentList{
+    border-top:1rpx solid #d6d6d6;
+}
+
 .comment{
     text-align: right
 }

@@ -13,10 +13,10 @@
     </view>
              <view class="comment"><image bindtap="commentTapped" src="../../images/discussionTapped.png"/></view>
     <view class="commentList">
-    {{commentListDiv}}
-        <!--<block wx:for="{{commentList}}">
+    <!--{{commentListDiv}}-->
+        <block wx:for="{{commentList}}">
             <template is="commentItem" data="{{...item}}"/>
-        </block>-->
+        </block>
         <!--<view data-commenterid="1" data-commentid="2" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
             <view class="info">
                 <image src="../../images/a.jpg"></image>

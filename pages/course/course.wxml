@@ -4,7 +4,9 @@
 <view wx:if="{{userInfo.isTeacher}}" class="section">
   <form bindsubmit="bindFormSubmit">
 <view>
-    <textarea class="noticeTextArea" auto-height placeholder="发布通知..." name="textarea"/>
+  <view class="noticeTextArea">
+    <textarea auto-height placeholder="发布通知..." name="textarea"/>
+    </view>
     <button class="publishBtn" form-type="submit"> 发布 </button>
     </view>
   </form>

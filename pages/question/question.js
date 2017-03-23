@@ -51,31 +51,7 @@ Page({
       commentInputFocus:true,
       commentInputPlaceholder:'@'+e.currentTarget.dataset.commentername+':'
     })
-  },
-  // generateCommentItemView:function(commentItem){
-  //   var commentItemView =  "<view data-commenterid="+commentItem.commenterId+" data-commentid="+commentItem.commentId+
-  //   " data-commentername='匿名用户' bindtap='commentItemTapped' class='commentItem'>"+
-  //               "<view class='info'> <image src='../../images/a.jpg'></image>"+
-  //               "<span>"+
-  //                   "<text>匿名用户</text>"+
-  //                   "<text>"+commentItem.commentContent+"</text>"+
-  //                   "<text>"+commentItem.commentTime+"</text>";
-  //   var subCommentList = commentItem.subCommentList;
-  //   for(var index in subCommentList){
-  //     commentItemView = commentItemView + this.generateCommentItemView(subCommentList[index]);
-  //   }
-  //   commentItemView = commentItemView +
-  //               "</span>"+
-  //           "</view>"+
-  //       "</view>";
-  //       return commentItemView;
-  // },
-  // generateCommentListView:function(commentList){
-  //   var commentList = "";
-  //   for(var index in commentList){
-  //     commentList = commentList+this.generateCommentItemView(commentList[index]);
-  //   }
-  // }
+  }
 })
 
 function generateCommentItemView(commentItem){
