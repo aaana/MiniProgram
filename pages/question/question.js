@@ -1,11 +1,14 @@
+var app = getApp();
 Page({
  data:{
         commentInputFocus:false,
-        commentInputPlaceholder:'评论'
+        commentInputPlaceholder:'评论',
+        parentId:-1
     },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
+      userInfo:app.globalData.userInfo,
        questionId:options.questionId,
        //应该注释
        commentList:[{
@@ -67,18 +70,42 @@ Page({
   commentTapped:function(){
     this.setData({
       commentInputFocus:true,
-      commentInputPlaceholder:'评论'
+      commentInputPlaceholder:'评论',
+      commentVal:""
     })
   },
   commentItemTapped:function(e){
     console.log(e);
     this.setData({
       commentInputFocus:true,
-      commentInputPlaceholder:'@'+e.currentTarget.dataset.commentername+':'
+      commentInputPlaceholder:'@'+e.currentTarget.dataset.commentername+':',
+      parentId:e.currentTarget.dataset.commentid,
+      commentVal:'@'+e.currentTarget.dataset.commentername+':'
     })
   },
-  sendCommentTapped:function(){
-    console.log("sendCommentTapped");
+  sendComment:function(e){
+    var that = this;
+    var commentContent = e.detail.value;
+    console.log(e);
+    wx.request({
+      url: 'https://URL',
+      data: {
+        userId: that.data.userInfo.userId,
+        parentId:that.data.parentId,
+        commentContent:commentContent
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })
 

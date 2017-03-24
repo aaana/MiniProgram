@@ -1,6 +1,7 @@
 var app = getApp();
 Page({
     data: {
+        pickerDisabled:false,
         inputShowed: false,
         inputVal: "",
         courseList:[],
@@ -187,6 +188,7 @@ Page({
         this.setData({
             inputVal: "",
             inputShowed: false,
+            pickerDisabled:false
             // courseList:this.data.allCourseList
         });
     },
@@ -194,6 +196,7 @@ Page({
         this.setData({
             inputVal: "",
             // courseList:this.data.allCourseList
+            pickerDisabled:false
         });
     },
     inputTyping: function (e) {
@@ -201,6 +204,10 @@ Page({
         var inputVal = e.detail.value;
         var userId = this.data.userInfo.userId;
         console.log("input:"+e.detail.value);
+            this.setData({
+                pickerDisabled:inputVal===''?false:true
+            })
+
         //todo获取已加入班级和未加入班级
         // wx.request({
         //   url: 'https://URL',
@@ -224,16 +231,18 @@ Page({
         this.setData({
             inputVal: e.detail.value,
             //应该被注释
-            searchedCourseListIn:[{
-                courseId:2,
-                courseName:e.detail.value,
-                isIn:true
+            searchedCourseListIn:[
+                {
+                    courseId:2,
+                    courseName:e.detail.value,
+                    isIn:true
                 }
             ],
-            searchedCourseListNotIn:[{
-                courseId:2,
-                courseName:"aaa",
-                isIn:false
+                searchedCourseListNotIn:[
+                {
+                    courseId:2,
+                    courseName:"aaa",
+                    isIn:false
                 }
             ],
             loadingHidden:false
@@ -249,6 +258,7 @@ Page({
         wx.request({
           url: '',
           data: {
+              userId:userId,
               courseName:e.detail.value,
               option:this.data.index
           },
@@ -258,12 +268,18 @@ Page({
             // success
             console.log("succeed");
             that.setData({
-                    courseList : [
-                        {
-                            courseId:1,
-                            courseName:"数据结构"
-                        }
-                    ]
+                    searchedCourseListIn:[{
+                    courseId:2,
+                    courseName:e.detail.value,
+                    isIn:true
+                    }
+                ],
+                searchedCourseListNotIn:[{
+                    courseId:2,
+                    courseName:"aaa",
+                    isIn:false
+                    }
+                ],
                 });
           },
           fail: function() {
@@ -299,9 +315,11 @@ Page({
         })
     },
     courseItemTapped:function(e){
+        var that = this;
         var isIn = e.currentTarget.dataset.isin;
         var courseId = e.currentTarget.id;
         var courseName = e.currentTarget.dataset.coursename;
+        var userId = this.data.userInfo.userId;
         if(!isIn){
             wx.showModal({
                 title: '提示',
@@ -310,6 +328,31 @@ Page({
                 success: function(res) {
                     if (res.confirm) {
                         //todo加入班级
+                        wx.request({
+                          url: 'https://URL',
+                          data: {
+                              courseId:courseId,
+                              userId:userId
+                          },
+                          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                          // header: {}, // 设置请求的 header
+                          success: function(res){
+                            // success
+                            wx.showToast({
+                                title: '加入成功',
+                                icon: 'success',
+                                duration: 2000
+                                })
+                            wx.navigateTo({
+                    url: '../course/course?courseId='+courseId+'&&courseName='+courseName})
+                          },
+                          fail: function() {
+                            // fail
+                          },
+                          complete: function() {
+                            // complete
+                          }
+                        })
                     console.log('用户点击确定')
                     }
                 }

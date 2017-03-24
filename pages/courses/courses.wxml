@@ -1,7 +1,7 @@
 <view class="page">
     <view class="page__bd">
     <view wx:if="{{!userInfo.isTeacher}}" class="weui-search-bar">
-            <picker bindchange="bindPickerChange" value="{{index}}" range="{{options}}">
+            <picker disabled="{{pickerDisabled}}" bindchange="bindPickerChange" value="{{index}}" range="{{options}}">
                 <span class="option"><text>{{options[index]}}</text><image style="width:18px;height:18px" src="../../images/more_unfold.png"></image></span>
             </picker>
             <view class="weui-search-bar__form">

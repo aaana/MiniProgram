@@ -30,13 +30,10 @@
     </view>
 </view>
 <view class="commentBox">
-        <form>
-         <view class="commentForm">
-            <input name="comment" focus="{{commentInputFocus}}" type="text" placeholder="{{commentInputPlaceholder}}"></input>
-        </view>
-        <image bindtap="sendCommentTapped" class="sendComment" src="../../images/send.png"></image>
-        </form>
-    
+    <view class="commentInput">
+        <input bindconfirm="sendComment" name="comment" focus="{{commentInputFocus}}" value="{{commentVal}}" type="text" placeholder="{{commentInputPlaceholder}}"></input>
+    </view>
+   
 </view>
 </view>
 <template name="commentItem">

@@ -55,25 +55,13 @@ view.info span text:last-child{
     border-top:1rpx solid #D9D9D9;
     width: 100%
 }
-.commentBox view.commentForm{
+.commentBox view.commentInput{
     background-color:white;
     margin:13px 10px;
     border-radius:3px;
-    /*padding:5px;*/
     border:1rpx solid #D9D9D9;
-    width:85%;
-    display:inline-block;
 
 }
-
-.sendComment{
-    width:30px;
-    height:30px;
-    position: relative;
-    top:8px
-
-}
-
-.commentBox view input{
+.commentBox view.commentInput input{
     margin: 5px
 }
