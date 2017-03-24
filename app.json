@@ -7,7 +7,6 @@
     "pages/index/index",
     "pages/discussion/discussion",
     "pages/question/question",
-    "pages/attendance/attendance",
     "pages/personalPage/personalPage",
     "pages/createCourse/createCourse",
     "pages/createQuestion/createQuestion"

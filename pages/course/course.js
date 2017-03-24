@@ -2,6 +2,7 @@ var app = getApp();
 Page({
     data:{
         noticeList : [],
+        isIn:false,
         tabData:{
             tab:1,
             img1Tapped:'../../images/noticeTapped.png',
@@ -25,7 +26,7 @@ Page({
             // success 
           }
         })
-        //获取通知列表
+        //todo获取通知列表，以及是否加入改班级
         this.setData({
             noticeList:[
                 {
@@ -45,6 +46,7 @@ Page({
         var that = this;
         console.log(that.data.userInfo.userId+":"+e.detail.value.textarea);
         var notice = e.detail.value.textarea;
+        //todo创建通知
         wx.request({
           url: '',
           data: {
@@ -99,6 +101,29 @@ Page({
                 console.log("success");
             }
         })
+    },
+    joinCourse:function(){
+        var that = this;
+        console.log("joinCourse");
+        //todo加入班级
+        // wx.request({
+        //   url: 'https://URL',
+        //   data: {
+        //       courseId:that.data.courseId,
+        //       userId:that.data.userInfo.userId
+        //   },
+        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        //   // header: {}, // 设置请求的 header
+        //   success: function(res){
+        //     // success
+        //   },
+        //   fail: function() {
+        //     // fail
+        //   },
+        //   complete: function() {
+        //     // complete
+        //   }
+        // })
     }
 
 });

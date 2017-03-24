@@ -1,4 +1,8 @@
 <import src="../../utils/util.wxml"></import>
+<!--<block wx:if="{{!isIn}}">
+  <view class="notInInfo"><icon type="info"></icon><text>你还未加入该班级</text></view>
+  <button class="joinCourseBtn" bindtap="joinCourse">立刻加入</button>
+</block>-->
 <view class="upper"><view class="rollLabel" bindtap="rollLabelTapped"><image style="width:26px;height:26px" src="../../images/scan2.png"></image></view>
 </view>
 <view wx:if="{{userInfo.isTeacher}}" class="section">

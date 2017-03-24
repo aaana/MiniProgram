@@ -111,7 +111,7 @@ Page({
                     courseName:"数据结构",
                     teacherName:"张颖",
                     num:50,
-                    createDate:"2016-01-01",                    
+                    createDate:"2016-01-01",             
                     modifyDate:"2016-01-01",
                     isIn:true,
                     unreadCount:3
@@ -198,18 +198,42 @@ Page({
     },
     inputTyping: function (e) {
         var that = this;
+        var inputVal = e.detail.value;
+        var userId = this.data.userInfo.userId;
         console.log("input:"+e.detail.value);
+        //todo获取已加入班级和未加入班级
+        // wx.request({
+        //   url: 'https://URL',
+        //   data: {
+        //     userId:userId,
+        //     inputVal:inputVal,
+        //     option:that.data.index
+        //   },
+        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        //   // header: {}, // 设置请求的 header
+        //   success: function(res){
+        //     // success
+        //   },
+        //   fail: function() {
+        //     // fail
+        //   },
+        //   complete: function() {
+        //     // complete
+        //   }
+        // })
         this.setData({
             inputVal: e.detail.value,
             //应该被注释
             searchedCourseListIn:[{
                 courseId:2,
-                courseName:e.detail.value
+                courseName:e.detail.value,
+                isIn:true
                 }
             ],
             searchedCourseListNotIn:[{
                 courseId:2,
-                courseName:"aaa"
+                courseName:"aaa",
+                isIn:false
                 }
             ],
             loadingHidden:false
@@ -273,5 +297,37 @@ Page({
             // complete
           }
         })
+    },
+    courseItemTapped:function(e){
+        var isIn = e.currentTarget.dataset.isin;
+        var courseId = e.currentTarget.id;
+        var courseName = e.currentTarget.dataset.coursename;
+        if(!isIn){
+            wx.showModal({
+                title: '提示',
+                content: '你还未加入该班级',
+                confirmText:'加入',
+                success: function(res) {
+                    if (res.confirm) {
+                        //todo加入班级
+                    console.log('用户点击确定')
+                    }
+                }
+            })
+        }else{
+            wx.navigateTo({
+                    url: '../course/course?courseId='+courseId+'&&courseName='+courseName,
+                    success: function(res){
+                        // success
+                    },
+                    fail: function() {
+                        // fail
+                    },
+                    complete: function() {
+                        // complete
+                    }
+                    })
+        }
+      
     }
 });

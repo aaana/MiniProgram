@@ -1,4 +1,16 @@
 @import "../../utils/util.wxss";
+
+.notInInfo{
+    text-align:center;
+    margin:10px;
+    padding:10px;
+
+}
+.joinCourseBtn{
+    background-color: #286090;
+    color:white
+}
+
 view.rollLabel{
     margin-right:15px;
 }

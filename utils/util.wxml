@@ -1,5 +1,5 @@
 <template name="courseItem">
-    <navigator id="{{courseId}}" url="../course/course?courseId={{courseId}}&&courseName={{courseName}}" class="weui-cell course" hover-class="navigator-hover">
+    <view id="{{courseId}}" url="../course/course?courseId={{courseId}}&&courseName={{courseName}}" class="weui-cell course" hover-class="navigator-hover">
             <view class="weui-cell__bd">
                 <span wx:if="{{unreadCount>0}}" class="unreadNotice"></span>
                 <text class="courseName">{{courseName}}</text>
@@ -13,7 +13,7 @@
                 <text class="num">\n{{num}}人</text>
                
             </view>
-    </navigator>
+    </view>
 </template>    
 
 <template name="loading">
