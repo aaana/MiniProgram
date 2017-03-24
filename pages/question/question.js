@@ -79,8 +79,7 @@ Page({
     this.setData({
       commentInputFocus:true,
       commentInputPlaceholder:'@'+e.currentTarget.dataset.commentername+':',
-      parentId:e.currentTarget.dataset.commentid,
-      commentVal:'@'+e.currentTarget.dataset.commentername+':'
+      parentId:e.currentTarget.dataset.commentid
     })
   },
   sendComment:function(e){

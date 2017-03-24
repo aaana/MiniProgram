@@ -13,10 +13,3 @@
     <template wx:for="{{discussionList}}" is="discussionItem" data="{{...item}}"/>
 </view>
 <template is="customedTab" data="{{...tabData}}"></template>
-
-<template name="discussionItem">
-    <navigator url="../question/question?questionId={{questionId}}"class="discussionItem" hover-class="navigator-hover" >
-        <view><text>{{questionAbstract}}</text></view>
-        <view class="comment"><image src="../../images/comment.png"/><text>{{commentNum}}</text></view>
-    </navigator>
-</template>

@@ -1,12 +1,80 @@
 var app = getApp();
 Page({
     data:{
-        userInfo:[]
+        userInfo:[],
+        discussionListIn:[],
+        tab:1,
+        messageNoticeList:[]
     },
     onLoad:function(){
         console.log("onLoad");
         this.setData({
-            userInfo:app.globalData.userInfo
+            userInfo:app.globalData.userInfo,
+            discussionListIn:[
+            {
+                userId:1,
+                questionId:1,
+                questionContent:"测试问题1",
+                questionAbstract:"测试问题1概要",
+                commentNum:3
+            },
+            {
+                userId:2,
+                questionId:2,
+                questionContent:"测试问题2",
+                questionAbstract:"测试问题2概要",
+                commentNum:2
+            }
+        ],
+        messageNoticeList:[
+            {
+                senderId:1,
+                senderNickName:"匿名用户",
+                senderName:"Anna",
+                senderStudentNo:"1352875",
+                //questionId
+                parentTargetId:1,
+                //commentId
+                targetId:1,
+                content:'这是一条评论',
+                messageType:2,
+                time:'2016-10-12'
+            },
+              {
+                senderId:1,
+                senderNickName:"匿名用户",
+                senderName:"Anna",
+                senderStudentNo:"1352875",
+                //courseId
+                parentTargetId:1,
+                //questionId
+                targetId:1,
+                content:'这是一条回复',
+                messageType:1,
+                time:'2016-10-12'
+            },
+              {
+                senderId:1,
+                senderNickName:"匿名用户",
+                senderName:"Anna",
+                senderStudentNo:"1352875",
+                //courseId
+                targetId:2,
+                content:'算法',
+                messageType:3,
+                time:'2016-10-12'
+            }
+        ]
+        })
+    },
+    discussionTabTapped:function(){
+        this.setData({
+            tab:1
+        })
+    },
+    messageNoticeTabTapped:function(){
+        this.setData({
+            tab:2
         })
     }
 });

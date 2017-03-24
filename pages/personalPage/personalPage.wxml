@@ -1,9 +1,77 @@
-        <view class="info">
-            <span><image style="width: 80px; height:80px; background-color: #eeeeee;" mode="{center" src="../../images/a.jpg"></image>
-            </span>
+<import src="../../utils/util.wxml"></import>
+<view class="upper">
+    <span><image src="../../images/a.jpg"></image></span>
+    <span><text>{{userInfo.username}}</text></span>
+    <span><text>{{userInfo.studentNo}}</text></span>
+</view>
+<!--<button class="logoutBtn">退出登录</button>-->
+<view class="tabsBox">
+<span class="tabs">
+<span bindtap="discussionTabTapped" class="{{tab===1?'tabChosen':''}}">我参与的匿名</span><span class="{{tab===2?'tabChosen':''}}" bindtap="messageNoticeTabTapped">消息提醒列表</span>
+</span>
+</view>
+
+<view wx:if="{{tab===1}}" class="discussionList">
+    <template wx:for="{{discussionListIn}}" is="discussionItem" data="{{...item}}"/>
+</view>
+<view class="notice">
+</view>
+<view wx:if="{{tab===2}}" class="messageNoticeList">
+<view class="switchView"><span>仅显示未读消息</span><switch checked bindchange=""/></view>
+<block wx:for="{{messageNoticeList}}">
+    <block wx:if="{{item.messageType===1}}">
+        <template is="replyNoticeItem" data="{{...item}}"/>
+    </block>
+    <block wx:elif="{{item.messageType===2}}">
+        <template is="replyNoticeItem" data="{{...item}}"/>
+    </block>
+    <block wx:else>
+        <template is="addNoticeItem" data="{{...item}}"/>
+    </block>
+</block>
+</view>
+
+<template name="replyNoticeItem">
+<view class="commentNoticeItem" data-targetcommentid='{{targetId}}'>
+        <view><text>有人回复了你:</text></view>
+         <view class="commentNoticeContent">
+            <image src="../../images/a.jpg"></image>
             <span>
-                <text>{{userInfo.username}}\n</text>
-                <text>{{userInfo.studentNo}}</text>
+                <text>{{senderNickName}}</text>
+                <text>{{content}}</text>
+                <text>{{time}}</text>
             </span>
-        
         </view>
+    </view>
+</template>
+
+<template name="commentNoticeItem">
+<view class="commentNoticeItem" data-targetquestionid='{{targetId}}'>
+        <view><text>有人评论了你:</text></view>
+         <view class="commentNoticeContent">
+            <image src="../../images/a.jpg"></image>
+            <span>
+                <text>{{senderNickName}}</text>
+                <text>{{content}}</text>
+                <text>{{time}}</text>
+            </span>
+        </view>
+    </view>
+</template>
+
+<template name="addCourseNoticeItem">
+ <view class="addCourseNoticeItem" data-targetcourseid='{{targetId}}'>
+        <view><text>申请请求:</text></view>
+         <view class="addCourseNoticeContent">
+            <image src="../../images/a.jpg"></image>
+            <view>
+                <span>
+                    <text>{{senderName+"("+senderStudentNo+")"}}</text>
+                    <text>{{"请求加入 "+content+"群"}}</text>
+                    <text>{{time}}</text>
+                </span>
+            </view>
+            <view><button><text>允许加入</text></button></view>
+        </view>
+    </view>
+</template>

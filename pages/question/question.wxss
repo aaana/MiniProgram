@@ -31,6 +31,8 @@ view.info span text:last-child{
     color: #888888
 }
 
+
+
 .question .questionContent{
     font-size:16px
 }
@@ -61,7 +63,8 @@ view.info span text:last-child{
     border-radius:3px;
     border:1rpx solid #D9D9D9;
 
+
 }
-.commentBox view.commentInput input{
+.commentBox view input{
     margin: 5px
 }
