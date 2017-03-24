@@ -17,16 +17,16 @@
 <view class="notice">
 </view>
 <view wx:if="{{tab===2}}" class="messageNoticeList">
-<view class="switchView"><span>仅显示未读消息</span><switch checked bindchange=""/></view>
+<view class="switchView"><span>仅显示未读消息</span><switch checked="{{unreadOnly}}" bindchange="unreadOnlySwitchChanged"/></view>
 <block wx:for="{{messageNoticeList}}">
-    <block wx:if="{{item.messageType===1}}">
+    <block wx:if="{{(!unreadOnly||item.unread)&&item.messageType===1}}">
         <template is="replyNoticeItem" data="{{...item}}"/>
     </block>
-    <block wx:elif="{{item.messageType===2}}">
-        <template is="replyNoticeItem" data="{{...item}}"/>
+    <block wx:elif="{{(!unreadOnly||item.unread)&&item.messageType===2}}">
+        <template is="commentNoticeItem" data="{{...item}}"/>
     </block>
-    <block wx:else>
-        <template is="addNoticeItem" data="{{...item}}"/>
+    <block wx:elif="{{(!unreadOnly||item.unread)}}">
+        <template is="addCourseNoticeItem" data="{{...item}}"/>
     </block>
 </block>
 </view>

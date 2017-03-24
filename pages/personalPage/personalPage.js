@@ -4,7 +4,8 @@ Page({
         userInfo:[],
         discussionListIn:[],
         tab:1,
-        messageNoticeList:[]
+        messageNoticeList:[],
+        unreadOnly:true
     },
     onLoad:function(){
         console.log("onLoad");
@@ -38,7 +39,8 @@ Page({
                 targetId:1,
                 content:'这是一条评论',
                 messageType:2,
-                time:'2016-10-12'
+                time:'2016-10-12',
+                unread:true
             },
               {
                 senderId:1,
@@ -51,7 +53,8 @@ Page({
                 targetId:1,
                 content:'这是一条回复',
                 messageType:1,
-                time:'2016-10-12'
+                time:'2016-10-12',
+                unread:false
             },
               {
                 senderId:1,
@@ -62,7 +65,8 @@ Page({
                 targetId:2,
                 content:'算法',
                 messageType:3,
-                time:'2016-10-12'
+                time:'2016-10-12',
+                unread:false
             }
         ]
         })
@@ -75,6 +79,11 @@ Page({
     messageNoticeTabTapped:function(){
         this.setData({
             tab:2
+        })
+    },
+    unreadOnlySwitchChanged:function(){
+        this.setData({
+            unreadOnly:!this.data.unreadOnly
         })
     }
 });
