@@ -1,9 +1,12 @@
 <import src="../../utils/util.wxml"></import>
 <view class="upper">
+        <view><image bindtap="logout" style="width:23px;height:23px" src="../../images/logout.png"></image></view>
+        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->      
+    </view>
+<view class="personalInfo">
     <span class="avatar"><image src="../../images/a.jpg"></image></span>
     <span><text>{{userInfo.username}}</text></span>
     <span><text>{{userInfo.studentNo}}</text></span>
-    <span bindtap="logout"><image src="../../images/logout.png" style="height:30px;width:30px"></image></span>
 </view>
 <view class="tabsBox">
 <span class="tabs">

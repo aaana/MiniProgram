@@ -15,7 +15,8 @@ Page({
     },
     onShow:function(){
         this.setData({
-                        discussionListIn:[
+            tab:1,
+            discussionListIn:[
             {
                 userId:1,
                 questionId:1,

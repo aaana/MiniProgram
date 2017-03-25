@@ -1,3 +1,22 @@
+.upper{
+    background-color:black;
+    display: flex;
+    justify-content:flex-end;
+    position:fixed;
+    height:32px;
+    width:100%;
+    top:0px;
+    z-index:5
+}
+
+/*.upper view{
+    margin-right: 15px
+}*/
+
+.upper view:last-child{
+    margin-right: 15px
+}
+
 .course{
     padding: 12px 10px 0px 10px;
 }

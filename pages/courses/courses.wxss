@@ -28,17 +28,17 @@ view.weui-search-bar{
     margin-left:18px;
 }
 
-.upper{
+/*.upper{
     background-color:black;
     display: flex;
     justify-content:flex-end;
-    /*text-align:right;*/
+    text-align:right;
     position:fixed;
     height:32px;
     width:100%;
     top:0px;
     z-index:5
-}
+}*/
 
 .bannerTeacher{
     margin-top:25px;
@@ -52,9 +52,9 @@ view.weui-search-bar{
     margin-right: 15px
 }
 
-.upper view:last-child{
+/*.upper view:last-child{
     margin-right: 15px
-}
+}*/
 
 .option{
     background-color:rgba(66,66,66,0.2);
