@@ -12,7 +12,28 @@
 
     </view>
              <view class="comment"><image bindtap="commentTapped" src="../../images/discussionTapped.png"/></view>
+              
     <view class="commentList">
+    <block  wx:if="{{focusCommentId}}">
+    <scroll-view scroll-y="true" style="height:400px" scroll-into-view="{{'comment'+focusCommentId}}">
+    <!--{{commentListDiv}}-->
+        <block wx:for="{{commentList}}">
+            <template is="commentItem" data="{{...item,focusCommentId:focusCommentId}}"/>
+        </block>
+        <!--<view data-commenterid="1" data-commentid="2" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
+            <view class="info">
+                <image src="../../images/a.jpg"></image>
+                <span>
+                    <text>匿名用户</text>
+                    <text>评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容</text>
+                    <text>2016-10-12</text>
+                </span>
+            </view>
+        </view>-->
+         </scroll-view>
+         </block>
+         <block wx:else>
+            <scroll-view style="height:400px" scroll-y="true">
     <!--{{commentListDiv}}-->
         <block wx:for="{{commentList}}">
             <template is="commentItem" data="{{...item}}"/>
@@ -27,17 +48,21 @@
                 </span>
             </view>
         </view>-->
+         </scroll-view>
+         </block>
     </view>
+   
 </view>
+
 <view class="commentBox">
     <view class="commentInput">
         <input bindconfirm="sendComment" name="comment" focus="{{commentInputFocus}}" type="text" placeholder="{{commentInputPlaceholder}}"></input>
     </view>
-   
 </view>
+
 </view>
 <template name="commentItem">
-    <view data-commenterid="{{commenterId}}" data-commentid="{{commentId}}" data-commentername="{{commenter}}" bindtap="commentItemTapped" class="commentItem">
+    <view id="{{'comment'+commentId}}" data-commentid="{{commentId}}" data-commentername="{{commenter}}" bindtap="commentItemTapped" class="{{focusCommentId==commentId?'commentItem focus':'commentItem'}}">
             <view class="info">
                 <image src="../../images/a.jpg"></image>
                 <span>

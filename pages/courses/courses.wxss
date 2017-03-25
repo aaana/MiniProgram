@@ -7,6 +7,11 @@
 .searchbar-result:before{
     display: none;
 }
+
+view.weui-search-bar{
+    margin-top: 32px
+}
+
 .info{
     padding:10px;
     background-color: white;
@@ -25,19 +30,29 @@
 
 .upper{
     background-color:black;
-    text-align:right;
+    display: flex;
+    justify-content:flex-end;
+    /*text-align:right;*/
     position:fixed;
     height:32px;
     width:100%;
     top:0px;
-    z-index:2
+    z-index:5
 }
 
 .bannerTeacher{
     margin-top:25px;
 }
 
-.upper view{
+.upper view:nth-child(2){
+    width:5px;
+    height:5px;
+    background-color:red;
+    border-radius:50%;
+    margin-right: 15px
+}
+
+.upper view:last-child{
     margin-right: 15px
 }
 

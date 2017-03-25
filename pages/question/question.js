@@ -26,9 +26,46 @@ Page({
             commentTime:"2016-10-12",
             commentContent:"子评论1",
             parentCommenter:"匿名用户1"
+         },
+          {
+            commenterId:2,
+            commentId:3,
+            commenter:"匿名用户2",
+            commentTime:"2016-10-12",
+            commentContent:"子评论1",
+            parentCommenter:"匿名用户1"
+         },
+          {
+            commenterId:2,
+            commentId:4,
+            commenter:"匿名用户2",
+            commentTime:"2016-10-12",
+            commentContent:"子评论1",
+            parentCommenter:"匿名用户1"
+         },
+          {
+            commenterId:2,
+            commentId:5,
+            commenter:"匿名用户2",
+            commentTime:"2016-10-12",
+            commentContent:"子评论1",
+            parentCommenter:"匿名用户1"
+         },
+          {
+            commenterId:2,
+            commentId:6,
+            commenter:"匿名用户2",
+            commentTime:"2016-10-12",
+            commentContent:"子评论1",
+            parentCommenter:"匿名用户1"
          }
          ],
     })
+    if(options.commentId){
+      this.setData({
+        focusCommentId:options.commentId
+      })
+    }
     //获取全部评论
     // wx.request({
     //   url: 'https://URL',

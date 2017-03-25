@@ -1,4 +1,14 @@
 var app = getApp();
+// function poll(that) {
+//     setTimeout(function() {
+//         that.setData({
+//             unreadMessageCount:2
+//         })
+//         console.log(that.data.unreadMessageCount);
+//             // 发起下一次请求
+//         poll(that);
+//     }, 10000);
+// }
 Page({
     data: {
         pickerDisabled:false,
@@ -21,6 +31,7 @@ Page({
         this.setData({
             userInfo:app.globalData.userInfo
         })
+        // poll(this);
         // this.setData({
         //     loadingHidden:false
         // })
@@ -106,6 +117,7 @@ Page({
         })
         //todo 从服务器获取数据 userid->courses
         this.setData({
+            unreadMessageCount:2,
             courseList : [
                 {
                     courseId:1,
@@ -372,5 +384,20 @@ Page({
                     })
         }
       
+    },
+    messageTapped:function(){
+        wx.switchTab({
+          url: '../personalPage/personalPage',
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+       
     }
 });

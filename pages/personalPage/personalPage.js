@@ -7,11 +7,15 @@ Page({
         messageNoticeList:[],
         unreadOnly:true
     },
-    onLoad:function(){
+    onLoad:function(options){
         console.log("onLoad");
         this.setData({
             userInfo:app.globalData.userInfo,
-            discussionListIn:[
+        })
+    },
+    onShow:function(){
+        this.setData({
+                        discussionListIn:[
             {
                 userId:1,
                 questionId:1,
@@ -47,10 +51,10 @@ Page({
                 senderNickName:"匿名用户",
                 senderName:"Anna",
                 senderStudentNo:"1352875",
-                //courseId
+                //questionid
                 parentTargetId:1,
-                //questionId
-                targetId:1,
+                //commentid(那条回复)
+                targetId:2,
                 content:'这是一条回复',
                 messageType:1,
                 time:'2016-10-12',
@@ -73,17 +77,68 @@ Page({
     },
     discussionTabTapped:function(){
         this.setData({
-            tab:1
+            tab:2
         })
     },
     messageNoticeTabTapped:function(){
         this.setData({
-            tab:2
+            tab:1
         })
     },
     unreadOnlySwitchChanged:function(){
         this.setData({
             unreadOnly:!this.data.unreadOnly
         })
+    },
+    commentNoticeItemTapped:function(e){
+        console.log("commentNoticeItemTapped");
+        var questionId = e.currentTarget.dataset.questionid;
+        var commentId = e.currentTarget.dataset.commentid;
+        console.log(questionId);
+        wx.navigateTo({
+          url: '../question/question?questionId='+questionId+'&&'+'commentId='+commentId,
+          success: function(res){
+            // success
+            //todo更新数据库 已读
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+    },
+    allowBtnTapped:function(e){
+        var senderId = e.currentTarget.dataset.senderid;
+        var courseId = e.currentTarget.dataset.courseid;
+        console.log("allowBtnTapped: "+senderId+"申请加入:"+courseId)
+        wx.request({
+          url: 'https://URL',
+          data: {
+              senderId:senderId,
+              courseId:courseId
+          },
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          // header: {}, // 设置请求的 header
+          success: function(res){
+            // success
+            //todo更新数据库已读
+               wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000
+            })
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+    },
+    logout:function(){
+        console.log("logout");
     }
 });

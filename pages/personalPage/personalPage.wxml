@@ -1,38 +1,39 @@
 <import src="../../utils/util.wxml"></import>
 <view class="upper">
-    <span><image src="../../images/a.jpg"></image></span>
+    <span class="avatar"><image src="../../images/a.jpg"></image></span>
     <span><text>{{userInfo.username}}</text></span>
     <span><text>{{userInfo.studentNo}}</text></span>
+    <span bindtap="logout"><image src="../../images/logout.png" style="height:30px;width:30px"></image></span>
 </view>
-<!--<button class="logoutBtn">退出登录</button>-->
 <view class="tabsBox">
 <span class="tabs">
-<span bindtap="discussionTabTapped" class="{{tab===1?'tabChosen':''}}">我参与的匿名</span><span class="{{tab===2?'tabChosen':''}}" bindtap="messageNoticeTabTapped">消息提醒列表</span>
+<span bindtap="messageNoticeTabTapped" class="{{tab===1?'tabChosen':''}}">消息提醒列表</span><span class="{{tab===2?'tabChosen':''}}" bindtap="discussionTabTapped">我参与的匿名</span>
 </span>
 </view>
 
-<view wx:if="{{tab===1}}" class="discussionList">
+<view wx:if="{{tab===2}}" class="discussionList">
     <template wx:for="{{discussionListIn}}" is="discussionItem" data="{{...item}}"/>
 </view>
 <view class="notice">
 </view>
-<view wx:if="{{tab===2}}" class="messageNoticeList">
+<view wx:if="{{tab===1}}" class="messageNoticeList">
 <view class="switchView"><span>仅显示未读消息</span><switch checked="{{unreadOnly}}" bindchange="unreadOnlySwitchChanged"/></view>
 <block wx:for="{{messageNoticeList}}">
     <block wx:if="{{(!unreadOnly||item.unread)&&item.messageType===1}}">
-        <template is="replyNoticeItem" data="{{...item}}"/>
+        <template is="commentNoticeItem" data="{{...item,title:'有人回复了你:'}}"/>
     </block>
     <block wx:elif="{{(!unreadOnly||item.unread)&&item.messageType===2}}">
-        <template is="commentNoticeItem" data="{{...item}}"/>
+        <template is="commentNoticeItem" data="{{...item,title:'有人评论了你:'}}"/>
     </block>
     <block wx:elif="{{(!unreadOnly||item.unread)}}">
-        <template is="addCourseNoticeItem" data="{{...item}}"/>
+        <template is="addCourseNoticeItem" data="{{...item,title:'申请请求:'}}"/>
     </block>
 </block>
 </view>
 
-<template name="replyNoticeItem">
-<view class="commentNoticeItem" data-targetcommentid='{{targetId}}'>
+<!--todo 连接跳转-->
+<!--<template name="replyNoticeItem">
+<view bindtap="replyNoticeItemTapped" class="commentNoticeItem" data-commentid='{{targetId}}'>
         <view><text>有人回复了你:</text></view>
          <view class="commentNoticeContent">
             <image src="../../images/a.jpg"></image>
@@ -43,11 +44,11 @@
             </span>
         </view>
     </view>
-</template>
+</template>-->
 
 <template name="commentNoticeItem">
-<view class="commentNoticeItem" data-targetquestionid='{{targetId}}'>
-        <view><text>有人评论了你:</text></view>
+<view bindtap="commentNoticeItemTapped" class="commentNoticeItem" data-questionid='{{parentTargetId}}' data-commentid='{{targetId}}'>
+        <view><text>{{title}}</text></view>
          <view class="commentNoticeContent">
             <image src="../../images/a.jpg"></image>
             <span>
@@ -60,8 +61,8 @@
 </template>
 
 <template name="addCourseNoticeItem">
- <view class="addCourseNoticeItem" data-targetcourseid='{{targetId}}'>
-        <view><text>申请请求:</text></view>
+ <view class="addCourseNoticeItem">
+        <view><text>{{title}}</text></view>
          <view class="addCourseNoticeContent">
             <image src="../../images/a.jpg"></image>
             <view>
@@ -71,7 +72,7 @@
                     <text>{{time}}</text>
                 </span>
             </view>
-            <view><button><text>允许加入</text></button></view>
+            <view><button data-courseid='{{targetId}}'data-senderid='{{senderId}}' bindtap="allowBtnTapped"><text>允许加入</text></button></view>
         </view>
     </view>
 </template>
