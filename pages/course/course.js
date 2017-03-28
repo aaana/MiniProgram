@@ -124,6 +124,27 @@ Page({
         //     // complete
         //   }
         // })
+    },
+    generateQRcodeTapped:function(){
+        var that = this;
+        wx.request({
+          url: 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=huwlGrHJP5cz5BBoqBZmIw6RDI_spcQPFzu6dmaPOJhlyXpV0N2Sji0UD664LVbuYntS3Cj2VApF4e-dScSccCPcULy8uxHx8pqzGllPiYDPspYtHop-HNxjZsRBKraCFUEhAEAQFP',
+          data: {
+              path:"../attendance?courseId="+that.data.courseId
+          },
+          method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          // header: {}, // 设置请求的 header
+          success: function(res){
+            // success
+            console.log("success");
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
     }
 
 });

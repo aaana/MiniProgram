@@ -15,8 +15,8 @@ view.rollLabel{
     margin-right:15px;
 }
 
-view.upper{
-    /*margin-bottom:25px;*/
+/*view.upper{
+    /*margin-bottom:25px;
     background:black;
     text-align:right;
     position:fixed;
@@ -24,7 +24,7 @@ view.upper{
     height:32px;
     width:100%;
     z-index: 2
-}
+}*/
 
 .noticeTextArea{
     margin:10px;
@@ -36,7 +36,8 @@ view.upper{
 }
 
 .noticeTextArea textarea{
-    width:100%
+    width:100%;
+    z-index: 1;
 }
 
 .noticeListTeacher{

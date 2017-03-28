@@ -50,6 +50,7 @@ view.personalInfo span.avatar image{
     background-color: white;
     text-align: center;
     padding: 12px;
+    font-size:13px;
     /*border-bottom:1rpx solid #d6d6d6;*/
 
 }

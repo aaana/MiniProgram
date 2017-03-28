@@ -15,7 +15,7 @@ view.info image{
 
 .commentItem{
     margin:10px 0;
-    padding:5px;
+    /*padding:5px;*/
     border-radius: 5px;
 }
 
@@ -36,7 +36,8 @@ view.info span text:last-child{
 
 
 .question .questionContent{
-    font-size:16px
+    font-size:16px;
+    margin-top: 5px;
 }
 
 .commentList{
