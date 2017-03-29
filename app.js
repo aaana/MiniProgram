@@ -16,7 +16,7 @@ App({
         success: function () {
           wx.getUserInfo({
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
+              that.globalData.WxUserInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
             }
           })
@@ -30,6 +30,10 @@ App({
             username:"Anna",
             studentNo:"1352875",
             isTeacher:true
-        }
+     },
+     url: "https://tinanyway.me/weike/wx",
+     token: "",
+     appid: "wx5761aea4e548362c",
+     appsecret: "b6f9c59d06c3731a3bd1c28bcaf7af24"
   }
 })

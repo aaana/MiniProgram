@@ -1,4 +1,5 @@
 // pages/discussion/discussion.js
+var app = getApp()
 Page({
  data:{
         discussionList:[],
@@ -15,6 +16,27 @@ Page({
     },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    var url = app.globalData.url + "/course";
+    console.log("url: " + url);
+    wx.request({
+      url: url,
+      data: {},
+      method: 'GET', 
+      header: {
+        //   "content-type": "application/x-www-form-urlencoded",
+          "Authorization": app.globalData.token
+      }, 
+      success: function(res){
+        console.log(res);
+      },
+      fail: function() {
+        console.log("fail...");
+      },
+      complete: function() {
+        console.log("complete..")
+      }
+    })
+
     this.setData({
         discussionList:[
             {
