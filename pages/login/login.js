@@ -44,8 +44,6 @@ Page({
           },
           method: 'POST', 
           success: function(res){
-              console.log(res);
-              
               //检测是否已绑定
               app.globalData.openid = res.data.openid;
               that.checkAccount(res.data.openid);
@@ -75,12 +73,20 @@ Page({
       success: function(res){
         console.log(res);
         if (res.data.result == "fail") {
-          //进行绑定
           that.loadingControl(true, 0);
-          console.log("have not been binded")
         } else {
-           //进行跳转
-           console.log("have been binded")
+          console.log("redirect");
+          that.loadingControl(true, 3);
+          app.globalData.userInfoDetail = res.data.user;
+          wx.switchTab({
+            url: '../courses/courses',
+            fail:function(res){
+              console.log("fail");
+            },
+            success:function(){
+              console.log("success");
+            }
+          })
         }
       },
       fail: function() {
@@ -109,6 +115,11 @@ Page({
         if (res.data.result == "fail") {
           that.loadingControl(true, 0);
           //提示请重试
+          wx.showToast({
+            title: '邮箱密码错误，请重试',
+            icon: 'loading',
+            duration: 2000
+          })
         } else {
           that.loadingControl(true, 1);
           app.globalData.token = res.data.token;
@@ -116,7 +127,12 @@ Page({
       },
       fail: function() {
         that.loadingControl(true, 0);
-          //提示请重试
+        //提示请重试
+        wx.showToast({
+          title: '请重试',
+          icon: 'loading',
+          duration: 2000
+        })
       }
     })
   },
@@ -139,14 +155,28 @@ Page({
       success: function(res){
         console.log(res);
         if (res.data.result == "fail") {
-          console.log(res.data.result);
+          //提示请重试
+          wx.showToast({
+            title: '绑定失败，请重试',
+            icon: 'loading',
+            duration: 2000
+          })
         } else {
-          console.log(res.data);
-          console.log(res.data.result);
+          console.log("redirect");
+          app.globalData.userInfoDetail = res.data.user;
+          wx.switchTab({
+             url: '../courses/courses'
+           });
         }
       },
       fail: function() {
-         console.log("checking account fail")
+        console.log("checking account fail");
+        //提示请重试
+        wx.showToast({
+          title: '绑定失败，请重试',
+          icon: 'loading',
+          duration: 2000
+        })
       }
     })
   },
