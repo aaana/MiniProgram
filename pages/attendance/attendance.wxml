@@ -1,1 +1,1 @@
-<button>点到</button>
+<button bindtap="attend">点到</button>
