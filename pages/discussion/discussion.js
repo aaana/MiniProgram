@@ -38,6 +38,8 @@ Page({
     })
 
     this.setData({
+        courseId:options.courseId,
+        courseName:options.courseName,
         discussionList:[
             {
                 userId:1,
@@ -69,11 +71,12 @@ Page({
     // 页面关闭
   },
    tab1Tapped:function(){
+       var that = this;
         // this.setData({
         //     'tabData.tab':1
         // })
           wx.redirectTo({
-            url: '../course/course',
+            url:'../course/course?courseId='+that.data.courseId+'&courseName='+that.data.courseName,
             fail:function(){
                 console.log("fail");
             },

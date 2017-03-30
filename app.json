@@ -1,5 +1,6 @@
 {
-  "pages":[
+  "pages":[   
+    "pages/courses/courses",
     "pages/login/login",
     "pages/courses/courses",
     "pages/logs/logs",
@@ -9,7 +10,8 @@
     "pages/question/question",
     "pages/personalPage/personalPage",
     "pages/createCourse/createCourse",
-    "pages/createQuestion/createQuestion"
+    "pages/createQuestion/createQuestion",
+    "pages/attendance/attendance"
   ],
   "window":{
     "backgroundTextStyle":"light",

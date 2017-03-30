@@ -17,7 +17,8 @@ Page({
     onLoad:function(options){
         this.setData({
             courseId:options.courseId,
-            userInfo:app.globalData.userInfo
+            userInfo:app.globalData.userInfo,
+            courseName:options.courseName
         })
         console.log(this.data.courseId);
         wx.setNavigationBarTitle({
@@ -87,13 +88,14 @@ Page({
         // })
     },
     tab2Tapped:function(){
+        var that = this;
         // this.setData({
         //     tabData:{
         //       'tabData.tab':2
         //     }
         // })
         wx.redirectTo({
-            url: '../discussion/discussion',
+            url: '../discussion/discussion?courseId='+that.data.courseId+'&courseName='+that.data.courseName,
             fail:function(){
                 console.log("fail");
             },
@@ -126,20 +128,45 @@ Page({
         // })
     },
     generateQRcodeTapped:function(){
-        var that = this;
+        var pageUrl = "../attendance/attendance?courseId="+this.data.courseId;
         wx.request({
-          url: 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=huwlGrHJP5cz5BBoqBZmIw6RDI_spcQPFzu6dmaPOJhlyXpV0N2Sji0UD664LVbuYntS3Cj2VApF4e-dScSccCPcULy8uxHx8pqzGllPiYDPspYtHop-HNxjZsRBKraCFUEhAEAQFP',
-          data: {
-              path:"../attendance?courseId="+that.data.courseId
-          },
-          method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx5761aea4e548362c&secret=b6f9c59d06c3731a3bd1c28bcaf7af24',
+          method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           // header: {}, // 设置请求的 header
           success: function(res){
             // success
-            console.log("success");
+            console.log(res);
+            var accessToken = res.data.access_token;
+            console.log(accessToken);
+            wx.request({
+              url: 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token='+accessToken,
+              header:{
+                'content-type': 'application/x-www-form-urlencoded',
+              },
+              data: {
+                  "path": pageUrl,
+                   "width": 430
+              },
+              method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+              // header: {}, // 设置请求的 header
+              success: function(res){
+                // success
+                console.log("generateQRcode succeed");
+                console.log(res);
+              },
+              fail: function(e) {
+                // fail
+                console.log(e);
+              },
+              complete: function() {
+                // complete
+                console.log(accessToken);
+              }
+            })
           },
-          fail: function() {
+          fail: function(e) {
             // fail
+            console.log(e);
           },
           complete: function() {
             // complete

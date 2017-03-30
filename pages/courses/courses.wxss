@@ -114,13 +114,14 @@ span.option text{
 }
 
 view.viewDetailedCourse{
-    color: black;
     float: right;
+    color: darkgray;
 }
 view.viewDetailedCourse text{
     color: darkgray;
     font-weight: 200;
     font-size:12px;
+    margin-right: 5px
 }
 /*.weui-search-bar__box{
     padding-right:0px; 
