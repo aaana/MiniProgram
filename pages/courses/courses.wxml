@@ -1,6 +1,7 @@
+<import src="../../utils/util.wxml"></import>
 <view class="page">
     <view class="page__bd">
-
+    <template is="loading" data="{{loadingHidden}}"/>
     <view  class="upper">
         <view><image bindtap="messageTapped" style="width:30px;height:30px" src="../../images/message.png"></image></view>
         <view wx:if="{{unreadMessageCount!=0}}"></view>
@@ -58,18 +59,16 @@
         <text class="isInLabel">未加入班级</text>
         <template wx:for="{{searchedCourseListNotIn}}" is="courseItem" data="{{...item}}"/>
     </view>
-            <!--<template is="loading" data="{{loadingHidden}}"/>-->
     </view>
 </view>
 
-<template name="courseItem">
+<!--<template name="courseItem">
     <view id="{{courseId}}" bindtap="courseItemTapped" data-isin="{{isIn}}" data-coursename="{{courseName}}" class="weui-cell course" hover-class="navigator-hover">
             <view class="weui-cell__bd">
                 <span wx:if="{{unreadCount>0}}" class="unreadNotice"></span>
                 <text class="courseName">{{courseName}}</text>
                 <text class="teacherName"> {{teacherName}}</text>
                 <!--<view class="viewDetailedCourse"><span wx:if="{{true}}" class="unreadNotice"><text>1</text></span>>
-</view>-->
                 <text class="modifyDate">{{modifyDate}}</text>
                 <text class="createDate">\n{{createDate}}</text>
                 <view class="viewDetailedCourse"><text wx:if="{{unreadCount>0}}">您有{{unreadCount}}条未读通知</text>>
@@ -78,4 +77,4 @@
                
             </view>
     </view>
-</template>   
+</template>   -->

@@ -8,47 +8,27 @@
         </span>
     </view>
     <view class="questionContent">
-        <text>设创学院智能大数据可视化实验室 招聘 本科 志愿者 5 人。要求理工科背景、在读大三大四的本科生。能够帮助实验室完成大数据分析方面的相关实验，例如标注分析数据，判读可视化图表等。工作优异者将有机会进入实验室实习，设计新颖 实用的可视化工具，并发表相关研究论文。</text>
+        <text>{{question}}</text>
 
     </view>
              <view class="comment"><image bindtap="commentTapped" src="../../images/discussionTapped.png"/></view>
               
     <view class="commentList">
     <block  wx:if="{{focusCommentId}}">
-    <scroll-view scroll-y="true" style="height:400px" scroll-into-view="{{'comment'+focusCommentId}}">
+        <scroll-view scroll-y="true" style="height:{{windowHeight-100}}px" scroll-into-view="{{'comment'+focusCommentId}}">
     <!--{{commentListDiv}}-->
-        <block wx:for="{{commentList}}">
-            <template is="commentItem" data="{{...item,focusCommentId:focusCommentId}}"/>
-        </block>
-        <!--<view data-commenterid="1" data-commentid="2" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
-            <view class="info">
-                <image src="../../images/a.jpg"></image>
-                <span>
-                    <text>匿名用户</text>
-                    <text>评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容</text>
-                    <text>2016-10-12</text>
-                </span>
-            </view>
-        </view>-->
+            <block wx:for="{{commentList}}">
+                <template is="commentItem" data="{{...item,focusCommentId:focusCommentId}}"/>
+            </block>
          </scroll-view>
-         </block>
-         <block wx:else>
-            <scroll-view style="height:400px" scroll-y="true">
+    </block>
+    <block wx:else>
+            <scroll-view style="height:{{windowHeight-100}}px" scroll-y="true">
     <!--{{commentListDiv}}-->
-        <block wx:for="{{commentList}}">
-            <template is="commentItem" data="{{...item}}"/>
-        </block>
-        <!--<view data-commenterid="1" data-commentid="2" data-commentername="匿名用户" bindtap="commentItemTapped" class="commentItem">
-            <view class="info">
-                <image src="../../images/a.jpg"></image>
-                <span>
-                    <text>匿名用户</text>
-                    <text>评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容</text>
-                    <text>2016-10-12</text>
-                </span>
-            </view>
-        </view>-->
-         </scroll-view>
+                <block wx:for="{{commentList}}">
+                    <template is="commentItem" data="{{...item}}"/>
+                </block>
+            </scroll-view>
          </block>
     </view>
    
@@ -62,13 +42,16 @@
 
 </view>
 <template name="commentItem">
-    <view id="{{'comment'+commentId}}" data-commentid="{{commentId}}" data-commentername="{{commenter}}" bindtap="commentItemTapped" class="{{focusCommentId==commentId?'commentItem focus':'commentItem'}}">
+    <view id="{{'comment'+id}}" data-commentid="{{id}}" data-commentername="{{publisher_name}}" data-commenterid="{{publisher_id}}" bindtap="commentItemTapped" class="{{focusCommentId==id?'commentItem focus':'commentItem'}}">
+            <view class="floor">
+                <text># {{level_num+1}}</text>
+            </view>
             <view class="info">
                 <image src="../../images/a.jpg"></image>
                 <span>
-                    <text>{{commenter}}</text>
-                    <text>{{(parentCommenter?("@"+parentCommenter+": "):"")+commentContent}}</text>
-                    <text>{{commentTime}}</text>
+                    <text>{{publisher_name}}</text>
+                    <text>{{(target_user_name?("@"+target_user_name+"(#"+(target_level_num+1)+"):"):"")+content}}</text>
+                    <text>{{publish_time_string}}</text>
                     <!--<block wx:if="{{subCommentList.length > 0}}">
                             <template wx:for="{{subCommentList}}" data="{{...item}}" is="commentItem"/>
                     </block>-->

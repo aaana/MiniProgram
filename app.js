@@ -25,6 +25,12 @@ App({
     }
   },
   globalData:{
+    url:'https://tinanyway.me/weike/wx',
+    //老师
+token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTAxMTAwNzEsInN1YiI6IntcImlkXCI6NCxcImVtYWlsXCI6XCJzb21lQHFxLmNvbVwifSJ9.N6qFEIXSha68Osvk9vvMsGehsspWrVKjXDiuWD2CIRQ",
+//学生
+// token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0ODk5MDg0MjMsInN1YiI6IntcImlkXCI6NSxcImVtYWlsXCI6XCJzb21lQDEyNi5jb21cIn0ifQ.Z0bhO2KVRnn2I_-ZDHqcqyDwOY_pLJIyiFHumNOjw6E",
+
      userInfo:{
             userId:1,
             username:"Anna",

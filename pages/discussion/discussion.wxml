@@ -13,3 +13,4 @@
     <template wx:for="{{discussionList}}" is="discussionItem" data="{{...item}}"/>
 </view>
 <template is="customedTab" data="{{...tabData}}"></template>
+<template is="loading" data="{{loadingHidden}}"/>

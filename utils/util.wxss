@@ -22,22 +22,22 @@
 }
 .course text.courseName{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
 }
 .course text.modifyDate{
     float:right;
     color: lightgray;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: lighter;
 } 
 .course text.num,.course text.createDate{
     color: darkgray;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: lighter;
     margin-right:20px;
 } 
 .course text.teacherName{
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 10px;
     color: black;
     font-weight: 200;
