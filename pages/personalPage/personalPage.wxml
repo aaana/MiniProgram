@@ -5,8 +5,8 @@
     </view>
 <view class="personalInfo">
     <span class="avatar"><image src="../../images/a.jpg"></image></span>
-    <span><text>{{userInfo.username}}</text></span>
-    <span><text>{{userInfo.studentNo}}</text></span>
+    <span><text>{{userInfo.name}}</text></span>
+    <span><text>{{userInfo.student_id}}</text></span>
 </view>
 <view class="tabsBox">
 <span class="tabs">

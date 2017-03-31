@@ -19,7 +19,7 @@ Page({
     })
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      userInfo:app.globalData.userInfo,
+      userInfo:app.globalData.userInfoDetail,
        questionId:options.questionId,
        courseId:options.courseId,
        //应该注释
@@ -148,7 +148,7 @@ Page({
   commentItemTapped:function(e){
     console.log(e);
     //todo 需要修改userInfo
-    if(e.currentTarget.dataset.commenterId !== this.data.userInfo.userId){
+    if(e.currentTarget.dataset.commenterId !== this.data.userInfo.id){
       this.setData({
             commentInputFocus:true,
             commentInputPlaceholder:'@'+e.currentTarget.dataset.commentername+':',

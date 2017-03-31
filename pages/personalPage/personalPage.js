@@ -10,7 +10,7 @@ Page({
     onLoad:function(options){
         console.log("onLoad");
         this.setData({
-            userInfo:app.globalData.userInfo,
+            userInfo:app.globalData.userInfoDetail,
         })
     },
     onShow:function(){

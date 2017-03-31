@@ -29,7 +29,7 @@ Page({
     onLoad:function(){
         console.log("courses onload invoked");
         this.setData({
-            userInfo:app.globalData.userInfo
+            userInfo:app.globalData.userInfoDetail
         })
     },
     onShow:function(){
