@@ -1,16 +1,46 @@
 /* pages/login/login.wxss */
-.formView{
-    margin-top: 10px
+.container {
+  padding-bottom: 100rpx;
 }
-.inputView{
-    margin: 10px;
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-color: #eee;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.hiddenControlClass {
+  display: none;
+}
+
+.inputView input{
+    margin: 10px 50px;
     border: 1rpx solid #d6d6d6;
-    border-radius: 5px;
-    padding: 5px
+    padding: 5px 10px;
 }
 
 .formView button{
-    margin: 10px;
+    margin: 10px 50px;
+    border-radius: 0;
     background-color: #286090;
-    color: white
+    color: white;
+    font-size: 16px;
+}
+.formView text{
+    text-align: center;
+    color: #aaa;
+    font-size: 14px;
+    display: block;
 }

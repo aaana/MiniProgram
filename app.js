@@ -16,7 +16,7 @@ App({
         success: function () {
           wx.getUserInfo({
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
+              that.globalData.WxUserInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
             }
           })
@@ -25,9 +25,8 @@ App({
     }
   },
   globalData:{
-    url:'https://tinanyway.me/weike/wx',
     //老师
-token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTAxMTAwNzEsInN1YiI6IntcImlkXCI6NCxcImVtYWlsXCI6XCJzb21lQHFxLmNvbVwifSJ9.N6qFEIXSha68Osvk9vvMsGehsspWrVKjXDiuWD2CIRQ",
+// token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTAxMTAwNzEsInN1YiI6IntcImlkXCI6NCxcImVtYWlsXCI6XCJzb21lQHFxLmNvbVwifSJ9.N6qFEIXSha68Osvk9vvMsGehsspWrVKjXDiuWD2CIRQ",
 //学生
 // token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0ODk5MDg0MjMsInN1YiI6IntcImlkXCI6NSxcImVtYWlsXCI6XCJzb21lQDEyNi5jb21cIn0ifQ.Z0bhO2KVRnn2I_-ZDHqcqyDwOY_pLJIyiFHumNOjw6E",
 
@@ -36,6 +35,10 @@ token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTAxMTAwNzEsInN1YiI6IntcImlkXCI6NCxcImVt
             username:"Anna",
             studentNo:"1352875",
             isTeacher:true
-        }
+     },
+     url: "https://tinanyway.me/weike/wx",
+     token: "",
+     appid: "wx5761aea4e548362c",
+     appsecret: "b6f9c59d06c3731a3bd1c28bcaf7af24"
   }
 })

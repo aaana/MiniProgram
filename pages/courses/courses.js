@@ -40,7 +40,7 @@ Page({
         })
         //todo 从服务器获取数据 userid->courses
         wx.request({
-          url: app.globalData.url+'/course',
+          url:app.globalData.url+'/course',
           method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           header: {
               "Authorization":app.globalData.token
