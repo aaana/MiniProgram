@@ -44,12 +44,12 @@ Page({
           },
           method: 'POST', 
           success: function(res){
-              //检测是否已绑定
-              app.globalData.openid = res.data.openid;
-              that.checkAccount(res.data.openid);
+            //检测是否已绑定
+            app.globalData.openid = res.data.openid;
+            that.checkAccount(res.data.openid);
           },
           fail: function() {
-              console.log("openid fail")
+            console.log("openid fail")
           },
           complete: function() {}
         })
@@ -78,6 +78,7 @@ Page({
           console.log("redirect");
           that.loadingControl(true, 3);
           app.globalData.userInfoDetail = res.data.user;
+          app.globalData.token = res.data.token;
           wx.switchTab({
             url: '../courses/courses',
             fail:function(res){

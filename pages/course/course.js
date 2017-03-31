@@ -11,7 +11,6 @@ Page({
             img2:'../../images/discussion.png',
             tab1Name:'通知',
             tab2Name:'匿名讨论'
-
         }
     },
     onLoad:function(options){
@@ -128,49 +127,40 @@ Page({
         // })
     },
     generateQRcodeTapped:function(){
-        var pageUrl = "../attendance/attendance?courseId="+this.data.courseId;
+        var pageUrl = "pages/attendance?courseId="+this.data.courseId;
+        console.log("generateQRcode..." + pageUrl);
+        var that = this;
         wx.request({
-          url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx5761aea4e548362c&secret=b6f9c59d06c3731a3bd1c28bcaf7af24',
-          method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          // header: {}, // 设置请求的 header
-          success: function(res){
-            // success
-            console.log(res);
-            var accessToken = res.data.access_token;
-            console.log(accessToken);
-            wx.request({
-              url: 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token='+accessToken,
-              header:{
-                'content-type': 'application/x-www-form-urlencoded',
-              },
-              data: {
-                  "path": pageUrl,
-                   "width": 430
-              },
-              method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-              // header: {}, // 设置请求的 header
-              success: function(res){
-                // success
-                console.log("generateQRcode succeed");
-                console.log(res);
-              },
-              fail: function(e) {
-                // fail
-                console.log(e);
-              },
-              complete: function() {
-                // complete
+            url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&" 
+                + "appid=" + app.globalData.appid + "&secret=" + app.globalData.appsecret,
+            method: "GET",
+            success: function(res){
+                var accessToken = res.data.access_token;
                 console.log(accessToken);
-              }
-            })
-          },
-          fail: function(e) {
-            // fail
-            console.log(e);
-          },
-          complete: function() {
-            // complete
-          }
+                wx.request({
+                    url: "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token="
+                        + accessToken,
+                    data: {
+                        "path": pageUrl,
+                        "width": 430
+                    },
+                    dataType: "text",
+                    method: 'POST',
+                    success: function(res){
+                        console.log("generateQRcode succeed");
+                        console.log(res);
+                        // that.setData({
+                        //     src:"data:image/jpeg;base64," + res.data,
+                        // })
+                    },
+                    fail: function(e) {
+                        console.log(e);
+                    }
+                })
+            },
+            fail: function(e) {
+                console.log(e);
+            }
         })
     }
 

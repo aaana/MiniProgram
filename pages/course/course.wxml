@@ -19,3 +19,4 @@
     <template wx:for="{{noticeList}}" is="noticeItem" data="{{...item}}"></template>
 </view>
 <template is="customedTab" data="{{...tabData}}"></template>
+      
