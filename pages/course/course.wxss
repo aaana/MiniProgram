@@ -41,11 +41,11 @@ view.rollLabel{
 }
 
 .noticeListTeacher{
-    margin-top:20px
+    margin-top:20px;
 }
 
 .noticeListStu{
-    margin-top:40px
+    margin-top:40px;
 }
 
 button.publishBtn{

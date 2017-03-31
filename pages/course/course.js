@@ -1,8 +1,7 @@
 var app = getApp();
 Page({
     data:{
-        noticeList : [],
-        isIn:false,
+        noticeList :null,
         tabData:{
             tab:1,
             img1Tapped:'../../images/noticeTapped.png',
@@ -14,11 +13,7 @@ Page({
         }
     },
     onLoad:function(options){
-        this.setData({
-            courseId:options.courseId,
-            userInfo:app.globalData.userInfo,
-            courseName:options.courseName
-        })
+        var that = this;
         console.log(this.data.courseId);
         wx.setNavigationBarTitle({
           title: options.courseName,
@@ -26,38 +21,79 @@ Page({
             // success 
           }
         })
-        //todo获取通知列表，以及是否加入改班级
         this.setData({
-            noticeList:[
-                {
-                    noticeId:1,
-                    noticeContent:"今天下午quiz",
-                    noticeTime:"2016-10-12"
-                },
-                {
-                    noticeId:2,
-                    noticeContent:"今天下午的课改到机房上，不要迟到！",                                                                    noticeTime:"2016-10-12"
-
-                }
-            ]
+            courseId:options.courseId,
+            userInfo:app.globalData.userInfo,
+            courseName:options.courseName,
+            loadingHidden:false,
+            // noticeList:[]
+        })
+        var requestUrl = app.globalData.url+'/course/'+options.courseId+'/notice';
+        console.log("course onLoad"+requestUrl);
+        //todo获取通知列表
+        wx.request({
+          url: requestUrl,
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              "Authorization":app.globalData.token
+          }, // 设置请求的 header
+          success: function(res){
+            // success
+            console.log("get noticeList succeed res:");
+            console.log(res);
+            that.setData({
+                loadingHidden:true,
+                noticeList:res.data.notices
+            })
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
         })
     },
     bindFormSubmit:function(e){
+        var a = [];
+        a.push(1);
         var that = this;
-        console.log(that.data.userInfo.userId+":"+e.detail.value.textarea);
-        var notice = e.detail.value.textarea;
+        var requestUrl = app.globalData.url+'/course/'+this.data.courseId+'/notice';
+        console.log("createNotice:"+this.data.userInfo.userId+":"+e.detail.value.textarea);
+        var content = e.detail.value.textarea;
+        console.log(app.globalData.token);
         //todo创建通知
         wx.request({
-          url: '',
+          url: requestUrl,
           data: {
-              notice:notice,
-              courseId:that.data.courseId,
-              userId:that.data.userInfo.userId
+              content:content,
           },
-          method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          // header: {}, // 设置请求的 header
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            "Authorization":app.globalData.token,
+            "Content-Type":"application/x-www-form-urlencoded"
+          }, // 设置请求的 header
           success: function(res){
+            console.log("createNotice succeed")
+            console.log(res);
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success',
+              duration: 2000
+            })
             // success
+            var notices = that.data.noticeList==null?[]:that.data.noticeList;
+            // if(!that.data.noticeList){
+            //   noticeList = [];
+            // }
+            // console.log("before...")
+            // console.log(notices);
+            notices.unshift(res.data.notice);
+            // console.log("after...")
+            // console.log(notices);
+            that.setData({
+                noticeList:notices
+            })
           },
           fail: function() {
             // fail

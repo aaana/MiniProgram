@@ -25,12 +25,27 @@ App({
     }
   },
   globalData:{
-     userInfo:{
-            userId:1,
-            username:"Anna",
-            studentNo:"1352875",
-            isTeacher:true
-     },
+    //老师
+// token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTAxMTAwNzEsInN1YiI6IntcImlkXCI6NCxcImVtYWlsXCI6XCJzb21lQHFxLmNvbVwifSJ9.N6qFEIXSha68Osvk9vvMsGehsspWrVKjXDiuWD2CIRQ",
+//学生
+// token:"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0ODk5MDg0MjMsInN1YiI6IntcImlkXCI6NSxcImVtYWlsXCI6XCJzb21lQDEyNi5jb21cIn0ifQ.Z0bhO2KVRnn2I_-ZDHqcqyDwOY_pLJIyiFHumNOjw6E",
+
+    //  userInfo:{
+    //         userId:1,
+    //         username:"Anna",
+    //         studentNo:"1352875",
+    //         isTeacher:true
+    //  },
+    //userInfoDetail
+    // "avatar_14.jpg"
+    // email:"593880978@qq.com"
+    // id:6
+    // introduction:""
+    // name:"anna"
+    // password:""
+    // school:""
+    // student_id:1352875
+    // type:1
      url: "https://tinanyway.me/weike/wx",
      token: "",
      appid: "wx5761aea4e548362c",

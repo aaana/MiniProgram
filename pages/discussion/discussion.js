@@ -1,5 +1,5 @@
 // pages/discussion/discussion.js
-var app = getApp()
+var app = getApp();
 Page({
  data:{
         discussionList:[],
@@ -16,53 +16,40 @@ Page({
     },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    var url = app.globalData.url + "/course";
-    console.log("url: " + url);
-    wx.request({
-      url: url,
-      data: {},
-      method: 'GET', 
-      header: {
-        //   "content-type": "application/x-www-form-urlencoded",
-          "Authorization": app.globalData.token
-      }, 
-      success: function(res){
-        console.log(res);
-      },
-      fail: function() {
-        console.log("fail...");
-      },
-      complete: function() {
-        console.log("complete..")
-      }
-    })
-
     this.setData({
         courseId:options.courseId,
         courseName:options.courseName,
-        discussionList:[
-            {
-                userId:1,
-                questionId:1,
-                questionContent:"测试问题1",
-                questionAbstract:"测试问题1概要",
-                commentNum:3
-            },
-            {
-                userId:2,
-                questionId:2,
-                questionContent:"测试问题2",
-                questionAbstract:"测试问题2概要",
-                commentNum:2
-            }
-        ]
+        loadingHidden:false
     })
+   
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
     // 页面显示
+    var that = this;
+    var courseId = this.data.courseId;
+     wx.request({
+      url: app.globalData.url+'/course/'+courseId+'/question',
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+          "Authorization":app.globalData.token
+      }, // 设置请求的 header
+      success: function(res){
+        // success
+        that.setData({
+            discussionList:res.data.questions,
+            loadingHidden:true
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   },
   onHide:function(){
     // 页面隐藏
@@ -92,8 +79,9 @@ Page({
      
     },
     createQuestionTapped:function(){
+      var that = this;
         wx.navigateTo({
-          url: '../createQuestion/createQuestion',
+          url: '../createQuestion/createQuestion?courseId='+that.data.courseId,
           success: function(res){
             // success
           },

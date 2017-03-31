@@ -29,167 +29,109 @@ Page({
     onLoad:function(){
         console.log("courses onload invoked");
         this.setData({
-            userInfo:app.globalData.userInfo
+            userInfo:app.globalData.userInfoDetail
         })
-        // poll(this);
-        // this.setData({
-        //     loadingHidden:false
-        // })
-        // //todo 从服务器获取数据 userid->courses
-        // this.setData({
-        //     courseList : [
-        //         {
-        //             courseId:1,
-        //             courseName:"数据结构",
-        //             teacherName:"张颖",
-        //             num:50,
-        //             createDate:"2016-01-01",                    
-        //             modifyDate:"2016-01-01",
-        //             isIn:true,
-        //             unreadCount:3
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         },{
-        //             courseId:2,
-        //             courseName:"算法",
-        //             teacherName:"徐燕凌",
-        //             num:50,
-        //             createDate:"2016-01-01",
-        //             modifyDate:"2016-01-01"
-        //         }
-        //     ],
-        // });
-        // this.setData({
-        //     allCourseList:this.data.courseList
-        // })
     },
     onShow:function(){
         console.log("courses onshow invoked");
+        var that = this;
         this.setData({
             loadingHidden:false
         })
         //todo 从服务器获取数据 userid->courses
+        wx.request({
+          url:app.globalData.url+'/course',
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              "Authorization":app.globalData.token
+          }, // 设置请求的 header
+          success: function(res){
+            // success
+            console.log(res);
+            that.setData({
+                courseList:res.data.courses,
+                loadingHidden:true
+            })
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
         this.setData({
             unreadMessageCount:2,
-            courseList : [
-                {
-                    courseId:1,
-                    courseName:"数据结构",
-                    teacherName:"张颖",
-                    num:50,
-                    createDate:"2016-01-01",             
-                    modifyDate:"2016-01-01",
-                    isIn:true,
-                    unreadCount:3
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                },{
-                    courseId:2,
-                    courseName:"算法",
-                    teacherName:"徐燕凌",
-                    num:50,
-                    createDate:"2016-01-01",
-                    modifyDate:"2016-01-01"
-                }
-            ],
+            // courseList : [
+            //     {
+            //         courseId:1,
+            //         courseName:"数据结构",
+            //         teacherName:"张颖",
+            //         num:50,
+            //         createDate:"2016-01-01",             
+            //         modifyDate:"2016-01-01",
+            //         isIn:true,
+            //         unreadCount:3
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01",
+            //         isIn:true
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     },{
+            //         courseId:2,
+            //         courseName:"算法",
+            //         teacherName:"徐燕凌",
+            //         num:50,
+            //         createDate:"2016-01-01",
+            //         modifyDate:"2016-01-01"
+            //     }
+            // ],
         });
-        this.setData({
-            loadingHidden:true
-        })
     },
     showInput: function () {
         this.setData({
