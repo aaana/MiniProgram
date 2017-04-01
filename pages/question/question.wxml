@@ -36,7 +36,7 @@
 
 <view class="commentBox">
     <view class="commentInput">
-        <input bindconfirm="sendComment" name="comment" focus="{{commentInputFocus}}" type="text" placeholder="{{commentInputPlaceholder}}"></input>
+        <input bindconfirm="sendComment" name="comment" focus="{{commentInputFocus}}" type="text" placeholder="{{commentInputPlaceholder}}" value="{{defaultValue}}"></input>
     </view>
 </view>
 

@@ -21,6 +21,16 @@ Page({
             // success 
           }
         })
+         wx.getSystemInfo({
+        success: function(res) {
+            console.log(res.windowWidth);
+            console.log(res.windowHeight);
+            that.setData({
+            windowHeight:res.windowHeight,
+            windowWidth:res.windowWidth
+            })
+        }
+        })
         this.setData({
             courseId:options.courseId,
             userInfo:app.globalData.userInfo,
