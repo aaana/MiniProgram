@@ -14,21 +14,22 @@ Page({
         })
     },
     onShow:function(){
-        this.setData({
-            discussionListIn:[
-            {
-                userId:1,
-                questionId:1,
-                content:"测试问题1",
-                commentNum:3
-            },
-            {
-                userId:2,
-                questionId:2,
-                content:"测试问题2",
-                commentNum:2
-            }
-        ],
+        this.getDiscussionList(this);
+        // this.setData({
+        //     discussionListIn:[
+        //     {
+        //         userId:1,
+        //         questionId:1,
+        //         content:"测试问题1",
+        //         commentNum:3
+        //     },
+        //     {
+        //         userId:2,
+        //         questionId:2,
+        //         content:"测试问题2",
+        //         commentNum:2
+        //     }
+        // ],
         // messageNoticeList:[
         //     {
         //         "id":7,
@@ -53,8 +54,33 @@ Page({
         //         "course_id":6
         //     }
         // ]
-        })
+        // })
         this.getMessageList(this);
+    },
+    getDiscussionList:function(that){
+        var that = this;
+        wx.request({
+          url: app.globalData.url+'/questions',
+          data: {},
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              'Authorization':app.globalData.token
+          }, // 设置请求的 header
+          success: function(res){
+            // success
+            if(res.data.result === 'success'){
+                that.setData({
+                    discussionListIn:res.data.questions
+                })
+            }
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
     },
     getMessageList:function(that){
         wx.request({

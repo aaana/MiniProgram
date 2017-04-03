@@ -60,7 +60,7 @@
             <span>
                 <text>{{trigger_content}}</text>
                 <text>{{target_content}}</text>
-                <text>{{time}}</text>
+                <text>{{init_time_string}}</text>
             </span>
         </view>
     </view>
@@ -75,7 +75,7 @@
                 <text>{{trigger_content}}</text>
                 <text wx:if="{{message_type==3}}">我：{{target_content}}</text>
                 <text wx:if="{{message_type==2}}">问题：{{target_content}}</text>
-                <text>{{time}}</text>
+                <text>{{init_time_string}}</text>
             </span>
         </view>
     </view>
