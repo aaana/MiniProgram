@@ -5,3 +5,8 @@ button{
     background-color: #286090;
     color: white
 }
+
+.qrcodeView{
+    text-align: center;
+    margin-top:20px
+}

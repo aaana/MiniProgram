@@ -101,7 +101,7 @@ view.personalInfo span.avatar image{
     background-color: white;
 }*/
 
-.commentNoticeItem{
+.noticeItem{
     border-bottom:1rpx solid #d6d6d6;
     padding:10px;
     background-color:white;
@@ -115,7 +115,7 @@ view.personalInfo span.avatar image{
 
 }
 
-view.commentNoticeContent image{
+view.noticeContent image{
     width:40px;
     height:40px;
     float:left;
@@ -124,21 +124,28 @@ view.commentNoticeContent image{
 
 }
 
-view.commentNoticeContent{
+view.noticeContent{
     margin:10px 0
 }
 
-view.commentNoticeContent span{ 
+view.noticeContent span{ 
     display:flex;
     flex-direction:column;
 }
 
-view.commentNoticeContent span text:nth-child(1){
-    font-weight: 500;
-    font-size:12px;
+view.noticeContent span text:nth-child(1){
+    /*font-weight: 500;*/
+    font-size:13px;
 }
 
-view.commentNoticeContent span text:last-child{
+view.noticeItem span text:nth-child(2){
+    padding:5px;
+    background-color:rgba(192,192,192,0.3);
+    border-radius:2px;
+    font-size: 13px;
+}
+
+view.noticeContent span text:last-child{
     color: #888888;
     font-size:12px;
 }

@@ -4,7 +4,7 @@ Page({
       console.log("createCourseFormSubmit");
         //存数据库
         wx.request({
-          url: app.globalData.url+'course',
+          url: app.globalData.url+'/course',
           data: {
             courseName:e.detail.value.courseName
           },

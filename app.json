@@ -12,6 +12,7 @@
     "pages/createCourse/createCourse",
     "pages/createQuestion/createQuestion",
     "pages/attendance/attendance"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",

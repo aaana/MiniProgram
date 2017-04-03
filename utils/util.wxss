@@ -20,6 +20,11 @@
 .course{
     padding: 12px 10px 0px 10px;
 }
+
+.courseSwiped{
+    padding: 12px 10px 0px 10px;
+    width:80%
+}
 .course text.courseName{
     font-weight: bold;
     font-size: 20px;

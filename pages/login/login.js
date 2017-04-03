@@ -79,6 +79,7 @@ Page({
           that.loadingControl(true, 3);
           app.globalData.userInfoDetail = res.data.user;
           app.globalData.token = res.data.token;
+          console.log(res.data.token);
           wx.switchTab({
             url: '../courses/courses',
             fail:function(res){

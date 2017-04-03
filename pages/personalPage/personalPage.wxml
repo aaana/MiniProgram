@@ -1,8 +1,8 @@
 <import src="../../utils/util.wxml"></import>
-<view class="upper">
+<!--<view class="upper">
         <view><image bindtap="logout" style="width:23px;height:23px" src="../../images/logout.png"></image></view>
-        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->      
-    </view>
+        <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>      
+    </view>-->
 <view class="personalInfo">
     <span class="avatar"><image src="../../images/a.jpg"></image></span>
     <span><text>{{userInfo.name}}</text></span>
@@ -10,7 +10,7 @@
 </view>
 <view class="tabsBox">
 <span class="tabs">
-<span bindtap="messageNoticeTabTapped" class="{{tab===1?'tabChosen':''}}">消息提醒列表</span><span class="{{tab===2?'tabChosen':''}}" bindtap="discussionTabTapped">我参与的匿名</span>
+<span bindtap="messageNoticeTabTapped" class="{{tab===1?'tabChosen':''}}">消息提醒列表</span><span class="{{tab===2?'tabChosen':''}}" bindtap="discussionTabTapped">我创建的提问</span>
 </span>
 </view>
 
@@ -22,15 +22,18 @@
 <view wx:if="{{tab===1}}" class="messageNoticeList">
 <view class="switchView"><span>仅显示未读消息</span><switch checked="{{unreadOnly}}" bindchange="unreadOnlySwitchChanged"/></view>
 <block wx:for="{{messageNoticeList}}">
-    <block wx:if="{{(!unreadOnly||item.unread)&&item.messageType===1}}">
+    <block wx:if="{{(!(unreadOnly&&item.hasread))&&item.message_type==1}}">
+        <template is="questionNoticeItem" data="{{...item,title:'有人创建了匿名提问:'}}"/>
+    </block>
+    <block wx:elif="{{(!(unreadOnly&&item.hasread))&&item.message_type==2}}">
+        <template is="commentNoticeItem" data="{{...item,title:'有人回答了你的问题:'}}"/>
+    </block>
+    <block wx:elif="{{(!(unreadOnly&&item.hasread))&&item.message_type==3}}">
         <template is="commentNoticeItem" data="{{...item,title:'有人回复了你:'}}"/>
     </block>
-    <block wx:elif="{{(!unreadOnly||item.unread)&&item.messageType===2}}">
-        <template is="commentNoticeItem" data="{{...item,title:'有人评论了你:'}}"/>
-    </block>
-    <block wx:elif="{{(!unreadOnly||item.unread)}}">
+    <!--<block wx:elif="{{(!(unreadOnly&&item.hasread))}}">
         <template is="addCourseNoticeItem" data="{{...item,title:'申请请求:'}}"/>
-    </block>
+    </block>-->
 </block>
 </view>
 
@@ -49,21 +52,36 @@
     </view>
 </template>-->
 
-<template name="commentNoticeItem">
-<view bindtap="commentNoticeItemTapped" class="commentNoticeItem" data-questionid='{{parentTargetId}}' data-commentid='{{targetId}}'>
+<template name="questionNoticeItem">
+<view bindtap="questionNoticeItemTapped" class="noticeItem" data-messageid='{{id}}' data-questionid='{{trigger_id}}' data-courseid='{{course_id}}'>
         <view><text>{{title}}</text></view>
-         <view class="commentNoticeContent">
+         <view class="noticeContent">
             <image src="../../images/a.jpg"></image>
             <span>
-                <text>{{senderNickName}}</text>
-                <text>{{content}}</text>
+                <text>{{trigger_content}}</text>
+                <text>{{target_content}}</text>
                 <text>{{time}}</text>
             </span>
         </view>
     </view>
 </template>
 
-<template name="addCourseNoticeItem">
+<template name="commentNoticeItem">
+<view bindtap="commentNoticeItemTapped" class="noticeItem" data-messageid='{{id}}' data-commentid='{{trigger_id}}' data-courseid='{{course_id}}' data-questionid='{{grandparent_id}}'>
+        <view><text>{{title}}</text></view>
+         <view class="noticeContent">
+            <image src="../../images/a.jpg"></image>
+            <span>
+                <text>{{trigger_content}}</text>
+                <text wx:if="{{message_type==3}}">我：{{target_content}}</text>
+                <text wx:if="{{message_type==2}}">问题：{{target_content}}</text>
+                <text>{{time}}</text>
+            </span>
+        </view>
+    </view>
+</template>
+
+<!--<template name="addCourseNoticeItem">
  <view class="addCourseNoticeItem">
         <view><text>{{title}}</text></view>
          <view class="addCourseNoticeContent">
@@ -78,4 +96,4 @@
             <view><button data-courseid='{{targetId}}'data-senderid='{{senderId}}' bindtap="allowBtnTapped"><text>允许加入</text></button></view>
         </view>
     </view>
-</template>
+</template>-->

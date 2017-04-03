@@ -1,1 +1,3 @@
-<button bindtap="attend">点到</button>
+<view wx:if="{{userInfo.type==0}}" class="qrcodeView"><image style="height:{{2*windowWidth/3}}px;width:{{2*windowWidth/3}}px" src="{{qrcodeUrl}}"></image></view>
+<button wx:if="{{userInfo.type==1}}" bindtap="attend">点到</button>
+<button bindtap="backBtnTapped">返回</button>

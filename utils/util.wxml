@@ -1,5 +1,5 @@
 <template name="courseItem">
-    <view id="{{id}}" bindtap="courseItemTapped" data-isin="{{hasJoined}}" data-coursename="{{course_name}}" class="weui-cell course" hover-class="navigator-hover">
+    <view><view id="{{id}}" bindtap="courseItemTapped" data-isin="{{hasJoined}}" data-coursename="{{course_name}}" bindlongtap="deleteCourse" class="weui-cell course" hover-class="navigator-hover">
             <view class="weui-cell__bd">
                 <span wx:if="{{unread_num>0}}" class="unreadNotice"></span>
                 <text class="courseName">{{course_name}}</text>
@@ -13,6 +13,8 @@
                
             </view>
     </view>
+    </view>
+    <view wx:if="{{leftSwipe}}" style="width:20px">删除</view>    
 </template>   
 
 <template name="loading">

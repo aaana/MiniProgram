@@ -39,7 +39,11 @@ Page({
             loadingHidden:false
         })
         //todo 从服务器获取数据 userid->courses
-        wx.request({
+        this.getCoursesIamIn(this);
+        this.getUnreadNum(this);
+    },
+    getCoursesIamIn:function(that){
+         wx.request({
           url:app.globalData.url+'/course',
           method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           header: {
@@ -60,78 +64,30 @@ Page({
             // complete
           }
         })
-        this.setData({
-            unreadMessageCount:2,
-            // courseList : [
-            //     {
-            //         courseId:1,
-            //         courseName:"数据结构",
-            //         teacherName:"张颖",
-            //         num:50,
-            //         createDate:"2016-01-01",             
-            //         modifyDate:"2016-01-01",
-            //         isIn:true,
-            //         unreadCount:3
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01",
-            //         isIn:true
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     },{
-            //         courseId:2,
-            //         courseName:"算法",
-            //         teacherName:"徐燕凌",
-            //         num:50,
-            //         createDate:"2016-01-01",
-            //         modifyDate:"2016-01-01"
-            //     }
-            // ],
-        });
+    },
+    getUnreadNum:function(that){
+        wx.request({
+          url: app.globalData.url+'/unreadMessages/num',
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              "Authorization":app.globalData.token
+          }, // 设置请求的 header
+          success: function(res){
+            // success
+            if(res.data.result==="success"){
+                that.setData({
+                    unreadMessageCount:res.data.unreadMessageNum
+                })
+            }
+        
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
     },
     showInput: function () {
         this.setData({
@@ -158,94 +114,67 @@ Page({
         var inputVal = e.detail.value;
         var userId = this.data.userInfo.userId;
         console.log("input:"+e.detail.value);
-            this.setData({
-                pickerDisabled:inputVal===''?false:true
-            })
-
-        //todo获取已加入班级和未加入班级
-        // wx.request({
-        //   url: 'https://URL',
-        //   data: {
-        //     userId:userId,
-        //     inputVal:inputVal,
-        //     option:that.data.index
-        //   },
-        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        //   // header: {}, // 设置请求的 header
-        //   success: function(res){
-        //     // success
-        //   },
-        //   fail: function() {
-        //     // fail
-        //   },
-        //   complete: function() {
-        //     // complete
-        //   }
-        // })
         this.setData({
             inputVal: e.detail.value,
-            //应该被注释
-            searchedCourseListIn:[
-                {
-                    courseId:2,
-                    courseName:e.detail.value,
-                    isIn:true
-                }
-            ],
-                searchedCourseListNotIn:[
-                {
-                    courseId:2,
-                    courseName:"aaa",
-                    isIn:false
-                }
-            ],
-            loadingHidden:false
-        });
-        
-        console.log(this.data.inputVal);
-        // if(this.data.inputVal === ''){
-        //     this.setData({
-        //         courseList:this.data.allCourseList
-        //     })
-        // }
-        // 从服务器获取数据 todo
+            pickerDisabled:inputVal===''?false:true,
+            loadingHidden:inputVal===''?true:false
+        })
+        var searchField = 'id';
+        if (that.data.index == 1){
+            searchField = 'name'
+        }else if(that.data.index == 2){
+            searchField = 'tname'
+        }   
+
+        var searchedCourseList = [];
+        var searchedCourseListIn = [];
+        var searchedCourseListNotIn = [];
+
+        //todo获取已加入班级和未加入班级
         wx.request({
-          url: '',
+          url: app.globalData.url+'/search',
           data: {
-              userId:userId,
-              courseName:e.detail.value,
-              option:this.data.index
+            keyWord:inputVal,
+            searchField:searchField
           },
-          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          // header: {}, // 设置请求的 header
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            "Authorization":app.globalData.token,
+            "Content-Type":"application/x-www-form-urlencoded"
+          }, // 设置请求的 header
           success: function(res){
             // success
-            console.log("succeed");
-            that.setData({
-                    searchedCourseListIn:[{
-                    courseId:2,
-                    courseName:e.detail.value,
-                    isIn:true
+            if(res.data.result==='success'){
+                searchedCourseList = res.data.courses;
+                if(searchedCourseList[0]!=null){
+                     for(var i = 0;i<searchedCourseList.length;i++){
+                        if(searchedCourseList[i].hasJoined){
+                            searchedCourseListIn.push(searchedCourseList[i]);
+                        }else{
+                            searchedCourseListNotIn.push(searchedCourseList[i]);
+                        }
                     }
-                ],
-                searchedCourseListNotIn:[{
-                    courseId:2,
-                    courseName:"aaa",
-                    isIn:false
-                    }
-                ],
+                }
+                that.setData({
+                    searchedCourseListIn:searchedCourseListIn,
+                    searchedCourseListNotIn:searchedCourseListNotIn,
+                    loadingHidden:true
                 });
+            }
           },
           fail: function() {
             // fail
           },
           complete: function() {
             // complete
-            that.setData({
-                loadingHidden:true
-            })
           }
-        })
+        })     
+        console.log(this.data.inputVal);
+        // if(this.data.inputVal === ''){
+        //     this.setData({
+        //         courseList:this.data.allCourseList
+        //     })
+        // }
     },
     bindPickerChange:function(e){
         console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -283,22 +212,23 @@ Page({
                     if (res.confirm) {
                         //todo加入班级
                         wx.request({
-                          url: 'https://URL',
-                          data: {
-                              courseId:courseId,
-                              userId:userId
-                          },
-                          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-                          // header: {}, // 设置请求的 header
+                          url: app.globalData.url+'/course/'+courseId+'/joining',
+                          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                          header: {
+                                "Authorization":app.globalData.token
+                          }, // 设置请求的 header
                           success: function(res){
                             // success
-                            wx.showToast({
-                                title: '加入成功',
-                                icon: 'success',
-                                duration: 2000
+                            if(res.data.result==='success'){
+                                wx.showToast({
+                                    title: '加入成功',
+                                    icon: 'success',
+                                    duration: 2000
                                 })
                             wx.navigateTo({
                     url: '../course/course?courseId='+courseId+'&&courseName='+courseName})
+                            }
+                            
                           },
                           fail: function() {
                             // fail
@@ -326,6 +256,45 @@ Page({
                     })
         }
       
+    },
+    deleteCourse:function(){
+        var that = this;
+        if(this.data.userInfo.type==0){
+            var courseId = e.currentTarget.id;
+            wx.showModal({
+                title: '确认',
+                content: '确认删除？',
+                success: function(res) {
+                    if (res.confirm) {
+                        wx.request({
+                          url: app.globalData.url+'/course/'+courseId+'/deletion',
+                          data: {},
+                          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                          header: {
+                              'Authorization':app.globalData.token
+                          }, // 设置请求的 header
+                          success: function(res){
+                            // success
+                            wx.showToast({
+                                title: '删除成功',
+                                icon: 'success',
+                                duration: 2000
+                            })
+                            that.getCoursesIamIn(that);
+                          },
+                          fail: function() {
+                            // fail
+                          },
+                          complete: function() {
+                            // complete
+                          }
+                        })
+                    } else if (res.cancel) {
+                    console.log('用户点击取消')
+                    }
+                }
+            })
+        }
     },
     messageTapped:function(){
         wx.switchTab({

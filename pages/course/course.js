@@ -33,7 +33,7 @@ Page({
         })
         this.setData({
             courseId:options.courseId,
-            userInfo:app.globalData.userInfo,
+            userInfo:app.globalData.userInfoDetail,
             courseName:options.courseName,
             loadingHidden:false,
             // noticeList:[]
@@ -64,6 +64,7 @@ Page({
           }
         })
     },
+    //发布通知
     bindFormSubmit:function(e){
         var a = [];
         a.push(1);
@@ -118,6 +119,42 @@ Page({
         wx.scanCode({
           success: function(res){
             // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+    },
+    generateQRcodeTapped:function(){
+        var that = this;
+        var courseId = this.data.courseId;
+        wx.request({
+          url: app.globalData.url+'/course/'+courseId+'/attendance',
+          data: {},
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              'Authorization':app.globalData.token
+          }, // 设置请求的 header
+          success: function(res){
+            // success
+            if(res.data.result === 'success'){
+                var qrcodeSrc = res.data.qrcodeSrc;
+                wx.navigateTo({
+                  url: app.globalData.url+'/attendance/attendance?qrcodeSrc='+qrcodeSrc+'&&courseId='+courseId,
+                  success: function(res){
+                    // success
+                  },
+                  fail: function() {
+                    // fail
+                  },
+                  complete: function() {
+                    // complete
+                  }
+                })
+            }
           },
           fail: function() {
             // fail
