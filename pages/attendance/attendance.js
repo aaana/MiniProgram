@@ -10,7 +10,9 @@ Page({
             userInfo:app.globalData.userInfoDetail
         })
         if(options.qrcodeSrc){
-            qrcodeUrl : app.globalData.url+options.qrcodeSrc
+            this.setData({
+                qrcodeUrl : app.globalData.qrurl+options.qrcodeSrc
+            })
         }
          wx.getSystemInfo({
       success: function(res) {

@@ -156,7 +156,7 @@ Page({
             if(res.data.result === 'success'){
                 var qrcodeSrc = res.data.qrcodeSrc;
                 wx.navigateTo({
-                  url: app.globalData.url+'/attendance/attendance?qrcodeSrc='+qrcodeSrc+'&&courseId='+courseId,
+                  url: '../attendance/attendance?qrcodeSrc='+qrcodeSrc+'&&courseId='+courseId,
                   success: function(res){
                     // success
                   },
@@ -222,42 +222,42 @@ Page({
         //   }
         // })
     },
-    generateQRcodeTapped:function(){
-        var pageUrl = "pages/attendance?courseId="+this.data.courseId;
-        console.log("generateQRcode..." + pageUrl);
-        var that = this;
-        wx.request({
-            url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&" 
-                + "appid=" + app.globalData.appid + "&secret=" + app.globalData.appsecret,
-            method: "GET",
-            success: function(res){
-                var accessToken = res.data.access_token;
-                console.log(accessToken);
-                wx.request({
-                    url: "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token="
-                        + accessToken,
-                    data: {
-                        "path": pageUrl,
-                        "width": 430
-                    },
-                    dataType: "text",
-                    method: 'POST',
-                    success: function(res){
-                        console.log("generateQRcode succeed");
-                        console.log(res);
-                        // that.setData({
-                        //     src:"data:image/jpeg;base64," + res.data,
-                        // })
-                    },
-                    fail: function(e) {
-                        console.log(e);
-                    }
-                })
-            },
-            fail: function(e) {
-                console.log(e);
-            }
-        })
-    }
+    // generateQRcodeTapped:function(){
+    //     var pageUrl = "pages/attendance?courseId="+this.data.courseId;
+    //     console.log("generateQRcode..." + pageUrl);
+    //     var that = this;
+    //     wx.request({
+    //         url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&" 
+    //             + "appid=" + app.globalData.appid + "&secret=" + app.globalData.appsecret,
+    //         method: "GET",
+    //         success: function(res){
+    //             var accessToken = res.data.access_token;
+    //             console.log(accessToken);
+    //             wx.request({
+    //                 url: "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token="
+    //                     + accessToken,
+    //                 data: {
+    //                     "path": pageUrl,
+    //                     "width": 430
+    //                 },
+    //                 dataType: "text",
+    //                 method: 'POST',
+    //                 success: function(res){
+    //                     console.log("generateQRcode succeed");
+    //                     console.log(res);
+    //                     // that.setData({
+    //                     //     src:"data:image/jpeg;base64," + res.data,
+    //                     // })
+    //                 },
+    //                 fail: function(e) {
+    //                     console.log(e);
+    //                 }
+    //             })
+    //         },
+    //         fail: function(e) {
+    //             console.log(e);
+    //         }
+    //     })
+    // }
 
 });
