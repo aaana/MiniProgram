@@ -46,7 +46,9 @@ view.attendanceCell text{
 view.rollNum{
     background-color: white;
     padding: 5px;
-    height:20px
+    height:20px;
+    font-size: 14px;
+    color: darkgray
 }
 
 view.rollNum text{

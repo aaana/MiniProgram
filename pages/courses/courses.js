@@ -36,8 +36,12 @@ Page({
         console.log("courses onshow invoked");
         var that = this;
         this.setData({
-            loadingHidden:false
+            loadingHidden:false,
+            // searchedCourseList:[],
+            // searchedCourseListIn:[],
+            // searchedCourseListNotIn:[]
         })
+        this.hideInput();
         //todo 从服务器获取数据 userid->courses
         this.getCoursesIamIn(this);
         this.getUnreadNum(this);
