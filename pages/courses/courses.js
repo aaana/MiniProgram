@@ -199,65 +199,90 @@ Page({
     },
     courseItemTapped:function(e){
         var that = this;
-        var isIn = e.currentTarget.dataset.isin;
-        var courseId = e.currentTarget.id;
-        var courseName = e.currentTarget.dataset.coursename;
-        var userId = this.data.userInfo.userId;
-        if(!isIn){
-            wx.showModal({
-                title: '提示',
-                content: '你还未加入该班级',
-                confirmText:'加入',
-                success: function(res) {
-                    if (res.confirm) {
-                        //todo加入班级
-                        wx.request({
-                          url: app.globalData.url+'/course/'+courseId+'/joining',
-                          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-                          header: {
-                                "Authorization":app.globalData.token
-                          }, // 设置请求的 header
-                          success: function(res){
-                            // success
-                            if(res.data.result==='success'){
-                                wx.showToast({
-                                    title: '加入成功',
-                                    icon: 'success',
-                                    duration: 2000
-                                })
-                            wx.navigateTo({
-                    url: '../course/course?courseId='+courseId+'&&courseName='+courseName})
-                            }
-                            
-                          },
-                          fail: function() {
-                            // fail
-                          },
-                          complete: function() {
-                            // complete
-                          }
-                        })
-                    console.log('用户点击确定')
-                    }
-                }
-            })
+        //触摸时间距离页面打开的毫秒数  
+        var touchTime = that.data.touch_end - that.data.touch_start;  
+        console.log(touchTime);  
+        //如果按下时间大于350为长按  
+        if (touchTime > 350) {  
+            this.deleteCourse(e);
         }else{
-            wx.navigateTo({
-                    url: '../course/course?courseId='+courseId+'&&courseName='+courseName,
-                    success: function(res){
-                        // success
-                    },
-                    fail: function() {
-                        // fail
-                    },
-                    complete: function() {
-                        // complete
+            var isIn = e.currentTarget.dataset.isin;
+            var courseId = e.currentTarget.id;
+            var courseName = e.currentTarget.dataset.coursename;
+            var userId = this.data.userInfo.userId;
+            if(!isIn){
+                wx.showModal({
+                    title: '提示',
+                    content: '你还未加入该班级',
+                    confirmText:'加入',
+                    success: function(res) {
+                        if (res.confirm) {
+                            //todo加入班级
+                            wx.request({
+                            url: app.globalData.url+'/course/'+courseId+'/joining',
+                            method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                            header: {
+                                    "Authorization":app.globalData.token
+                            }, // 设置请求的 header
+                            success: function(res){
+                                // success
+                                if(res.data.result==='success'){
+                                    wx.showToast({
+                                        title: '加入成功',
+                                        icon: 'success',
+                                        duration: 2000
+                                    })
+                                wx.navigateTo({
+                        url: '../course/course?courseId='+courseId+'&&courseName='+courseName})
+                                }
+                                
+                            },
+                            fail: function() {
+                                // fail
+                            },
+                            complete: function() {
+                                // complete
+                            }
+                            })
+                        console.log('用户点击确定')
+                        }
                     }
-                    })
+                })
+            }else{
+                wx.navigateTo({
+                        url: '../course/course?courseId='+courseId+'&&courseName='+courseName,
+                        success: function(res){
+                            // success
+                        },
+                        fail: function() {
+                            // fail
+                        },
+                        complete: function() {
+                            // complete
+                        }
+                        })
+            }
         }
+
+       
       
     },
-    deleteCourse:function(){
+     mytouchstart: function (e) {  
+        // let that = this;  
+        this.setData({  
+            touch_start: e.timeStamp  
+        })  
+        console.log(e.timeStamp + '- touch-start')  
+    },  
+    //按下事件结束  
+    mytouchend: function (e) {  
+        // let that = this;  
+        this.setData({  
+            touch_end: e.timeStamp  
+        })  
+        console.log(e.timeStamp + '- touch-end')  
+    }, 
+    deleteCourse:function(e){
         var that = this;
         if(this.data.userInfo.type==0){
             var courseId = e.currentTarget.id;

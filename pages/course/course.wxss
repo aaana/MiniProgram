@@ -55,9 +55,9 @@ view.rollLabel{
     z-index: 1;
 }
 
-.noticeList{
+/*.noticeList{
     margin-top: 20px
-}
+}*/
 
 /*.noticeListTeacher{
     margin-top:20px;

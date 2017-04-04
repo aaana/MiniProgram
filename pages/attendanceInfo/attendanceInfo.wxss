@@ -33,7 +33,7 @@ view.row text:last-child{
 view.attendanceCell{
     padding:5px;
     background-color:white;
-    border-bottom: 1rpx solid rgba(192, 192, 192, 0.3);
+    border-bottom:1rpx solid rgba(192, 192, 192,0.3);
 }
 
 view.attendanceCell text{
@@ -41,4 +41,14 @@ view.attendanceCell text{
     display:inline-block;
     text-align:center;
     font-size:14px
+}
+
+view.rollNum{
+    background-color: white;
+    padding: 5px;
+    height:20px
+}
+
+view.rollNum text{
+    float: right;
 }

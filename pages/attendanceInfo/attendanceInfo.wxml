@@ -3,6 +3,7 @@
 <view class="pageTitle">
     <text>出勤情况</text>
 </view>
+<view class="rollNum"><text>总点到次数：{{rollNum}}</text></view>
 <view class="row"><text>学号</text><text>出勤数</text><text>缺勤数</text><text>出勤率</text></view>
 <view class="attendanceCells" wx:for="{{attendanceCells}}">
 <template is="attendanceCell" data="{{...item}}"/>

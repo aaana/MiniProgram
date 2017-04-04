@@ -1,5 +1,5 @@
 <template name="courseItem">
-    <view><view id="{{id}}" bindtap="courseItemTapped" data-isin="{{hasJoined}}" data-coursename="{{course_name}}" bindlongtap="deleteCourse" class="weui-cell course" hover-class="navigator-hover">
+    <view><view id="{{id}}" bindtap="courseItemTapped" data-isin="{{hasJoined}}" data-coursename="{{course_name}}" bindtouchstart="mytouchstart" bindtouchend="mytouchend" class="weui-cell course" hover-class="navigator-hover">
             <view class="weui-cell__bd">
                 <span wx:if="{{unread_num>0}}" class="unreadNotice"></span>
                 <text class="courseName">{{course_name}}</text>

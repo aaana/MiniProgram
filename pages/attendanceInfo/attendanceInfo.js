@@ -57,11 +57,14 @@ Page({
           }, // 设置请求的 header
           success: function(res){
             // success
-            that.setData({
-                rollNum:res.data.all,
-                attendanceCells:res.data.attendanceCells,
-                loadingHidden:true
-            })
+            if(res.data.result==='success'){
+                that.setData({
+                    rollNum:res.data.all,
+                    attendanceCells:res.data.attendanceCells,
+                    loadingHidden:true
+                })
+            }
+
             
           },
           fail: function() {
