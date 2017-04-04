@@ -1,7 +1,6 @@
 var app = getApp();
 Page({
     data:{
-        userInfo:[],
         discussionListIn:[],
         tab:1,
         messageNoticeList:[],
@@ -10,7 +9,8 @@ Page({
     onLoad:function(options){
         console.log("onLoad");
         this.setData({
-            userInfo:app.globalData.userInfoDetail,
+            userWxInfo:app.globalData.WxUserInfo,
+            userInfo:app.globalData.userInfoDetail
         })
     },
     onShow:function(){

@@ -4,7 +4,7 @@
         <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>      
     </view>-->
 <view class="personalInfo">
-    <span class="avatar"><image src="../../images/a.jpg"></image></span>
+    <span class="avatar"><image src="{{userWxInfo.avatarUrl}}"></image></span>
     <span><text>{{userInfo.name}}</text></span>
     <span><text>{{userInfo.student_id}}</text></span>
 </view>

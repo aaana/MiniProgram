@@ -9,7 +9,11 @@ Page({
             courseName:e.detail.value.courseName
           },
           method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          // header: {}, // 设置请求的 header
+          header: {
+            "Authorization":app.globalData.token,
+              "content-type":"application/x-www-form-urlencoded"
+            
+          }, // 设置请求的 header
           success: function(res){
             // success
             wx.showToast({
