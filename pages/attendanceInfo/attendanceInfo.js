@@ -36,8 +36,40 @@ Page({
             courseId:options.courseId,
             userInfo:app.globalData.userInfoDetail,
             courseName:options.courseName,
-            loadingHidden:false
             // noticeList:[]
+        })
+    },
+    onShow:function(){
+        this.getAttendanceRecords();
+    },
+    getAttendanceRecords:function(){
+        var that = this;
+        this.setData({
+            loadingHidden:false
+        })
+        var courseId = that.data.courseId;
+        wx.request({
+          url: app.globalData.url+'/course/'+courseId+'/attendanceRecords',
+          data: {},
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              'Authorization':app.globalData.token
+          }, // 设置请求的 header
+          success: function(res){
+            // success
+            that.setData({
+                rollNum:res.data.all,
+                attendanceCells:res.data.attendanceCells,
+                loadingHidden:true
+            })
+            
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
         })
     },
      tab1Tapped:function(){

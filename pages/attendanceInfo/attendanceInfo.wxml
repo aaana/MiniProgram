@@ -1,2 +1,14 @@
 <import src="../../utils/util.wxml"></import>
 <template is="customedTab" data="{{...tabData}}"></template>
+<view class="pageTitle">
+    <text>出勤情况</text>
+</view>
+<view class="row"><text>学号</text><text>出勤数</text><text>缺勤数</text><text>出勤率</text></view>
+<view class="attendanceCells" wx:for="{{attendanceCells}}">
+<template is="attendanceCell" data="{{...item}}"/>
+</view>
+
+<template name="attendanceCell">
+<view class="attendanceCell"><text>{{stu_num}}</text><text>{{attendance}}</text><text>{{absence}}</text><text>{{attendance_rate}}%</text></view>
+</template>
+<template is="loading" data="{{loadingHidden}}"/>

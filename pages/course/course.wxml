@@ -5,6 +5,9 @@
 </block>-->
 <view class="upper"><view class="rollLabel"><image wx:if="{{userInfo.type==1}}"  bindtap="rollLabelTapped" style="width:26px;height:26px" src="../../images/scan2.png"></image><image wx:else  bindtap="generateQRcodeTapped" style="width:28px;height:28px" src="../../images/qrcode2.png"></image></view>
 </view>
+<view class="pageTitle">
+    <text>通知</text>
+</view>
 <view wx:if="{{userInfo.type==0}}" class="section">
   <form bindsubmit="bindFormSubmit">
 <view>
@@ -16,7 +19,7 @@
   </form>
 </view>
 <scroll-view scroll-y="true" style="height:{{windowHeight-60}}px">
-<view class="{{userInfo.type==0?'noticeListTeacher':'noticeListStu'}}">
+<view class="noticeList">
     <template wx:for="{{noticeList}}" is="noticeItem" data="{{...item}}"></template>
 </view>
 </scroll-view>

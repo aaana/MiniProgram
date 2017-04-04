@@ -46,8 +46,8 @@ App({
     // school:""
     // student_id:1352875
     // type:1
-     url: "https://tinanyway.me/weike/wx",
-     qrurl: "https://tinanyway.me/weike",
+     url: "https://tinanyway.site/weike/wx",
+     qrurl: "https://tinanyway.site/weike",
      token: "",
      appid: "wx5761aea4e548362c",
      appsecret: "b6f9c59d06c3731a3bd1c28bcaf7af24"
