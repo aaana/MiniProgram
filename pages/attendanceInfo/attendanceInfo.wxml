@@ -1,0 +1,2 @@
+<import src="../../utils/util.wxml"></import>
+<template is="customedTab" data="{{...tabData}}"></template>

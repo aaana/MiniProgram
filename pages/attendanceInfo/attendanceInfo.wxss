@@ -1,0 +1,2 @@
+/* pages/attendanceInfo/attendanceInfo.wxss */
+@import "../../utils/util.wxss";

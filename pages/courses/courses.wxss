@@ -49,11 +49,11 @@ view.weui-search-bar{
     height:5px;
     background-color:red;
     border-radius:50%;
-    /*margin-right: 15px*/
+    margin-right: 15px
 }
 
-.upper view:last-child{
-    margin-left: 15px;
+.upper view.addCourse{
+    /*margin-left: 15px;*/
     margin-right: 15px
 }
 

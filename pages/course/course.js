@@ -8,8 +8,11 @@ Page({
             img1:'../../images/notice.png',
             img2Tapped:'../../images/discussionTapped.png',
             img2:'../../images/discussion.png',
+            img3Tapped:'../../images/attendanceTapped.png',
+            img3:'../../images/attendance.png',
             tab1Name:'通知',
-            tab2Name:'匿名讨论'
+            tab2Name:'匿名讨论',
+            tab3Name:'出勤情况'
         }
     },
     onLoad:function(options){
@@ -197,6 +200,21 @@ Page({
             success:function(){
                 console.log("success");
             }
+        })
+    },
+    tab3Tapped:function(){
+      var that = this;
+        wx.redirectTo({
+          url: '../attendanceInfo/attendanceInfo?courseId='+that.data.courseId+'&courseName='+that.data.courseName,
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
         })
     },
     joinCourse:function(){

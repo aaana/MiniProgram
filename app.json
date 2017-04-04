@@ -11,7 +11,8 @@
     "pages/personalPage/personalPage",
     "pages/createCourse/createCourse",
     "pages/createQuestion/createQuestion",
-    "pages/attendance/attendance"
+    "pages/attendance/attendance",
+    "pages/attendanceInfo/attendanceInfo"
     
   ],
   "window":{
