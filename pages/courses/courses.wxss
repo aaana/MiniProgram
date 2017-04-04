@@ -57,6 +57,14 @@ view.weui-search-bar{
     margin-right: 15px
 }
 
+.upper marginLeft{
+    margin-left: 15px;
+}
+
+.upper marginRight{
+    margin-right: 15px;
+}
+
 .option{
     background-color:rgba(66,66,66,0.2);
     border-radius:3px;

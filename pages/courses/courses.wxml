@@ -3,8 +3,8 @@
     <view class="page__bd">
     <template is="loading" data="{{loadingHidden}}"/>
     <view  class="upper">
-        <view><image bindtap="messageTapped" style="width:30px;height:30px" src="../../images/message.png"></image></view>
-        <view class="unreadMessageCount" wx:if="{{unreadMessageCount!=0}}"></view>
+        <view class="{{unreadMessageCount!==0?'':' marginRight'}}"><image bindtap="messageTapped" style="width:30px;height:30px" src="../../images/message.png"></image></view>
+        <view class="unreadMessageCount" wx:if="{{unreadMessageCount!==0}}"></view>
         <view class="addCourse" wx:if="{{userInfo.type==0}}">
             <image bindtap="createCourseTapped" style="width:30px;height:30px" src="../../images/add.png"></image>
         </view>
