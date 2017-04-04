@@ -57,11 +57,11 @@ view.weui-search-bar{
     margin-right: 15px
 }
 
-.upper marginLeft{
+.upper .marginLeft{
     margin-left: 15px;
 }
 
-.upper marginRight{
+.upper .marginRight{
     margin-right: 15px;
 }
 
