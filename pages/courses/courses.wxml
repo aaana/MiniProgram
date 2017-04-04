@@ -4,8 +4,10 @@
     <template is="loading" data="{{loadingHidden}}"/>
     <view  class="upper">
         <view><image bindtap="messageTapped" style="width:30px;height:30px" src="../../images/message.png"></image></view>
-        <view wx:if="{{unreadMessageCount!=0}}"></view>
-         <view wx:if="{{userInfo.type==0}}"><image bindtap="createCourseTapped" style="width:30px;height:30px" src="../../images/add.png"></image></view>
+        <view class="unreadMessageCount" wx:if="{{unreadMessageCount!=0}}"></view>
+        <view wx:if="{{userInfo.type==0}}">
+            <image bindtap="createCourseTapped" style="width:30px;height:30px" src="../../images/add.png"></image>
+        </view>
         <!--<button wx:if="{{true}}" class="createCourse"><text>＋</text></button>-->      
     </view>
         <view wx:if="{{userInfo.type==1}}" class="weui-search-bar">
