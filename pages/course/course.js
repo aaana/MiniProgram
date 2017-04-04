@@ -116,9 +116,22 @@ Page({
     },
     rollLabelTapped:function(){
         console.log("rollLabelTapped");
+        var courseId = this.data.courseId;
         wx.scanCode({
           success: function(res){
             // success
+            wx.navigateTo({
+              url: '../attendance/attendance?courseId='+courseId,
+              success: function(res){
+                // success
+              },
+              fail: function() {
+                // fail
+              },
+              complete: function() {
+                // complete
+              }
+            })
           },
           fail: function() {
             // fail
